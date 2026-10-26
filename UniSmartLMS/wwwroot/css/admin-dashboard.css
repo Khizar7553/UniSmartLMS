@@ -1,0 +1,110 @@
+﻿/* ========================================
+   ADMIN DASHBOARD SPECIFIC STYLES
+   ======================================== */
+
+/* Admin Cards */
+.admin-stat-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-sm);
+}
+
+    .admin-stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.admin-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.admin-stat-label {
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Charts Container */
+.chart-container {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 1.5rem;
+    height: 300px;
+}
+
+/* System Health Indicators */
+.health-indicator {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.health-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+    .health-dot.green {
+        background: #28a745;
+        box-shadow: 0 0 8px #28a745;
+    }
+
+    .health-dot.yellow {
+        background: #ffc107;
+        box-shadow: 0 0 8px #ffc107;
+    }
+
+    .health-dot.red {
+        background: #dc3545;
+        box-shadow: 0 0 8px #dc3545;
+    }
+
+/* User Role Distribution */
+.role-distribution {
+    list-style: none;
+    padding: 0;
+}
+
+    .role-distribution li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--gray-200);
+    }
+
+.role-badge {
+    padding: 0.25rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+    .role-badge.admin {
+        background: #dc3545;
+        color: white;
+    }
+
+    .role-badge.librarian {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .role-badge.faculty {
+        background: #28a745;
+        color: white;
+    }
+
+    .role-badge.student {
+        background: #ffc107;
+        color: #212529;
+    }

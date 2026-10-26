@@ -1,0 +1,59 @@
+WHAT IS FRONTEND?
+Frontend is everything users see and interact with (HTML, CSS, JavaScript, React, Vue, Angular).
+
+WHAT IS BACKEND?
+Backend handles server-side logic, databases, APIs (Python, Java, Node.js, PHP, Ruby).
+
+WHAT IS FULL STACK?
+Full stack developers work on both frontend and backend.
+
+WHAT IS THE DIFFERENCE BETWEEN HTTP AND HTTPS?
+HTTP transfers plain text (port 80). HTTPS encrypts with SSL/TLS (port 443). HTTPS is secure.
+
+WHAT IS THE DIFFERENCE BETWEEN GET AND POST?
+GET appends data to URL (visible, cached, limited). POST sends in body (hidden, no size limit).
+
+WHAT IS THE DIFFERENCE BETWEEN PUT AND PATCH?
+PUT replaces entire resource. PATCH applies partial updates.
+
+WHAT IS THE DIFFERENCE BETWEEN REST AND SOAP?
+REST is architectural style (lightweight, JSON). SOAP is protocol (heavier, XML).
+
+WHAT IS THE DIFFERENCE BETWEEN COOKIE AND SESSION?
+Cookie stores on client (4KB, persistent). Session stores on server (more secure, temporary).
+
+WHAT IS THE DIFFERENCE BETWEEN LOCAL STORAGE AND SESSION STORAGE?
+Local storage: persists until deleted (5-10MB). Session storage: persists until tab closes.
+
+WHAT IS JWT?
+JWT (JSON Web Token) is a compact, URL-safe token for authentication/authorization.
+
+WHAT IS OAUTH?
+OAuth is an open standard for token-based authentication/authorization (Login with Google/Facebook).
+
+WHAT IS RESPONSIVE DESIGN?
+Responsive design automatically adjusts layout for different screen sizes using flexible grids and media queries.
+
+WHAT IS PROGRESSIVE WEB APP?
+PWA is a web app that works like native app (offline, push notifications, home screen installation).
+
+WHAT IS SEO?
+SEO (Search Engine Optimization) improves website visibility in search engines.
+
+WHAT IS CDN?
+CDN (Content Delivery Network) distributes content across global servers for faster loading.
+
+WHAT IS WEB 2.0?
+Web 2.0 focuses on user-generated content, social media, interactivity.
+
+WHAT IS WEB 3.0?
+Web 3.0 focuses on decentralization, blockchain, user-owned data.
+
+WHAT IS SERVERLESS?
+Serverless lets you run code without managing servers. Pay per execution (AWS Lambda, Azure Functions).
+
+WHAT IS MICROSERVICES?
+Microservices architecture splits application into small, independent services.
+
+WHAT IS MONOLITHIC ARCHITECTURE?
+Monolithic architecture has all components in a single application.

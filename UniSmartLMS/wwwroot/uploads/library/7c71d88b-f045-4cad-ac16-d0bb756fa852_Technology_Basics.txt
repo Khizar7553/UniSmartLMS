@@ -1,0 +1,47 @@
+WHAT IS ARTIFICIAL INTELLIGENCE?
+Artificial Intelligence (AI) is the simulation of human intelligence in machines programmed to think and learn. Applications include ChatGPT, self-driving cars, facial recognition, and recommendation systems.
+
+WHAT IS MACHINE LEARNING?
+Machine Learning is a subset of AI where systems learn from data without explicit programming. Types: supervised, unsupervised, and reinforcement learning.
+
+WHAT IS DEEP LEARNING?
+Deep Learning uses artificial neural networks with multiple layers to process information. Used in image recognition, NLP, and voice assistants.
+
+WHAT IS GENERATIVE AI?
+Generative AI creates new content (text, images, music) from training data. Examples: ChatGPT, DALL-E, Midjourney, Stable Diffusion.
+
+WHAT IS NATURAL LANGUAGE PROCESSING?
+NLP enables computers to understand, interpret, and generate human language. Used in chatbots, translation, sentiment analysis.
+
+WHAT IS COMPUTER VISION?
+Computer Vision enables machines to interpret visual information from images/videos. Used in facial recognition, medical imaging, autonomous vehicles.
+
+WHAT IS ROBOTICS?
+Robotics designs, builds, and operates robots. Combines mechanical engineering, electronics, and AI for automation.
+
+WHAT IS INTERNET OF THINGS?
+IoT connects physical devices to internet for data exchange. Examples: smart home devices, wearables, industrial sensors.
+
+WHAT IS BLOCKCHAIN?
+Blockchain is a distributed ledger recording transactions securely. Underlying technology for Bitcoin, Ethereum, smart contracts.
+
+WHAT IS CLOUD COMPUTING?
+Cloud computing delivers computing services (servers, storage, databases) over internet. Providers: AWS, Azure, Google Cloud.
+
+WHAT IS EDGE COMPUTING?
+Edge computing processes data near the source instead of cloud. Reduces latency, used in IoT, autonomous vehicles.
+
+WHAT IS QUANTUM COMPUTING?
+Quantum computing uses quantum mechanics to solve complex problems. Potential applications: cryptography, drug discovery, optimization.
+
+WHAT IS CYBERSECURITY?
+Cybersecurity protects systems, networks, programs from digital attacks. Key areas: network security, application security, information security.
+
+WHAT IS DEVOPS?
+DevOps combines software development and IT operations for faster delivery. Practices: CI/CD, infrastructure as code, monitoring.
+
+WHAT IS DATA SCIENCE?
+Data Science extracts insights from data using statistics, algorithms, and domain expertise.
+
+WHAT IS BIG DATA?
+Big Data refers to extremely large datasets requiring special processing. Characteristics: Volume, Velocity, Variety, Veracity, Value.

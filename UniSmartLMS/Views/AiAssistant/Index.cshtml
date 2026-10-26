@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Smart Library AI";
+    var recentConversations = ViewBag.RecentConversations as List<UniSmartLMS.Models.ChatConversation>;
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <!-- Sidebar - Conversations -->
+        <div class="col-md-3">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-dark text-white rounded-4 rounded-bottom-0 py-3">
+                    <h5 class="mb-0"><i class="fas fa-history me-2"></i>Recent Chats</h5>
+                </div>
+                <div class="card-body p-0" style="max-height: 500px; overflow-y: auto;">
+                    <div id="conversationsList">
+                        @if (recentConversations != null && recentConversations.Any())
+                        {
+                            foreach (var conv in recentConversations)
+                            {
+                                <div class="conversation-item p-3 border-bottom" data-conv-id="@conv.Id" style="cursor: pointer;">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <i class="fas fa-comment me-2 text-muted"></i>
+                                            <span>@conv.Title</span>
+                                        </div>
+                                        <small class="text-muted">@conv.UpdatedAt?.ToString("dd MMM")</small>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="text-center py-5">
+                                <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                                <p class="text-muted">No chat history</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="card-footer bg-light">
+                    <button class="btn btn-outline-primary w-100" onclick="newChat()">
+                        <i class="fas fa-plus me-2"></i>New Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="col-md-9">
+            <div class="card shadow-lg border-0 rounded-4" style="height: calc(100vh - 120px); display: flex; flex-direction: column;">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0 py-3">
+                    <h4 class="mb-0">
+                        <i class="fas fa-robot me-2"></i>Smart Library AI
+                        <span class="badge bg-light text-dark ms-2">DeepThink™ Engine</span>
+                    </h4>
+                </div>
+
+                <!-- Messages Area -->
+                <div id="chatMessages" class="flex-grow-1 overflow-auto p-4" style="background: #f8f9fa; min-height: 400px;">
+                    <div class="text-center py-5">
+                        <i class="fas fa-brain fa-4x text-primary mb-3"></i>
+                        <h4>Welcome to Smart Library AI</h4>
+                        <p class="text-muted">Ask me anything about your uploaded documents!</p>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="p-3 border-top bg-white">
+                    <div class="input-group">
+                        <input type="text" id="questionInput" class="form-control form-control-lg"
+                               placeholder="Ask a question..." onkeypress="if(event.keyCode==13) sendMessage()" />
+                        <button class="btn btn-success btn-lg" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane me-2"></i>Ask
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let currentConversationId = null;
+        let isLoading = false;
+
+        function newChat() {
+            currentConversationId = null;
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="text-center py-5">
+                    <i class="fas fa-brain fa-4x text-primary mb-3"></i>
+                    <h4>Welcome to Smart Library AI</h4>
+                    <p class="text-muted">Ask me anything about your uploaded documents!</p>
+                </div>
+            `;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('questionInput');
+            const message = input.value.trim();
+            if (!message || isLoading) return;
+
+            addMessage(message, 'user');
+            input.value = '';
+            isLoading = true;
+            showTypingIndicator();
+
+            try {
+                const response = await fetch('/SmartLibrary/Ask', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(message)
+                });
+
+                const data = await response.json();
+                hideTypingIndicator();
+
+                if (data.success) {
+                    addMessage(data.answer, 'assistant', data.sources);
+                } else {
+                    addMessage('Sorry, I encountered an error. Please try again.', 'assistant');
+                }
+            } catch (error) {
+                hideTypingIndicator();
+                addMessage('Network error. Please try again.', 'assistant');
+            }
+            isLoading = false;
+        }
+
+        function addMessage(text, role, sources = null) {
+            const container = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const container = document.getElementById('chatMessages');
+            const indicator = document.createElement('div');
+            indicator.id = 'typingIndicator';
+            indicator.className = 'message assistant';
+            indicator.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
+            container.appendChild(indicator);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        // Load conversation on click
+        document.querySelectorAll('.conversation-item').forEach(el => {
+            el.addEventListener('click', async function() {
+                const convId = this.dataset.convId;
+                currentConversationId = convId;
+                // Load messages from backend
+                const response = await fetch(`/SmartLibrary/GetMessages?conversationId=${convId}`);
+                const data = await response.json();
+                if (data.success) {
+                    const container = document.getElementById('chatMessages');
+                    container.innerHTML = '';
+                    data.messages.forEach(msg => addMessage(msg.content, msg.role.toLowerCase()));
+                }
+            });
+        });
+    </script>
+}

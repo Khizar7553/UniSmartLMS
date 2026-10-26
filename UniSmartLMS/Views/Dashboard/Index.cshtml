@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using UniSmartLMS.Models
+@inject UserManager<AppUser> UserManager
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var roles = user != null ? await UserManager.GetRolesAsync(user) : new List<string>();
+    string dashboardView = "GuestDashboard";
+
+    if (roles.Contains("Student")) dashboardView = "StudentDashboard";
+    else if (roles.Contains("Faculty")) dashboardView = "FacultyDashboard";
+    else if (roles.Contains("Librarian")) dashboardView = "LibrarianDashboard";
+    else if (roles.Contains("Admin")) dashboardView = "AdminDashboard";
+    else if (roles.Contains("Staff")) dashboardView = "StaffDashboard";
+    else dashboardView = "GuestDashboard";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+@await Html.PartialAsync(dashboardView)

@@ -1,0 +1,66 @@
+﻿@model UniSmartLMS.Models.SectionE_Circulation.ReturnItem
+
+@{
+    ViewData["Title"] = "Process Book Return";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Process Book Return</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="IssuanceId" class="form-label fw-bold">Issuance ID / Loan Record</label>
+                            <select asp-for="IssuanceId" class="form-control" asp-items="ViewBag.IssuanceList">
+                                <option value="">-- Select Issuance --</option>
+                            </select>
+                            <span asp-validation-for="IssuanceId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ReturnDate" class="form-label fw-bold">Return Date</label>
+                            <input asp-for="ReturnDate" type="datetime-local" class="form-control" />
+                            <span asp-validation-for="ReturnDate" class="text-danger small"></span>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> The issuance record will be marked as closed after return.
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" checked />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Process Return</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+@if (TempData["FineMessage"] != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show mt-3">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        @TempData["FineMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}

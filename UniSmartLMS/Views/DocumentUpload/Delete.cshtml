@@ -1,0 +1,52 @@
+﻿@using UniSmartLMS.Models
+@model Document
+
+@{
+    ViewData["Title"] = "Delete Document";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4 border-danger">
+                <div class="card-header bg-danger text-white rounded-4 rounded-bottom-0 py-3">
+                    <h3 class="mb-0"><i class="fas fa-trash-alt me-2"></i>Delete Document</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Warning!</strong> This action cannot be undone.
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Document to Delete</label>
+                        <div class="alert alert-secondary">
+                            <i class="fas fa-file-pdf text-danger me-2"></i> @Model.FileName
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Document Info</label>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-calendar me-2"></i> Uploaded: @Model.UploadedAt.ToString("dd MMM yyyy, hh:mm tt")</li>
+                            <li><i class="fas fa-database me-2"></i> File Size: @(Model.FileSize.HasValue ? (Model.FileSize.Value / 1024).ToString("N0") + " KB" : "N/A")</li>
+                        </ul>
+                    </div>
+
+                    <hr />
+                    <form asp-action="DeleteConfirmed" method="post">
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-danger px-4">
+                                <i class="fas fa-trash-alt me-2"></i>Confirm Delete
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                                <i class="fas fa-arrow-left me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

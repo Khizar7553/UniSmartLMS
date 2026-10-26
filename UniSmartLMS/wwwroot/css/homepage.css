@@ -1,0 +1,406 @@
+﻿/* ========================================
+   HOMEPAGE STYLES - UniSmartLMS
+   ======================================== */
+
+.hero-section {
+    background: linear-gradient(135deg, #0a2a1a 0%, #0a3a2a 50%, #0a2a1a 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+    .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="none" stroke="white" stroke-width="0.5" d="M50 0 L100 50 L50 100 L0 50 Z M50 15 L85 50 L50 85 L15 50 Z"/></svg>');
+        background-repeat: repeat;
+        pointer-events: none;
+    }
+
+    .hero-section::after {
+        content: "بسم اللہ الرحمن الرحیم";
+        position: absolute;
+        bottom: 20px;
+        right: 30px;
+        font-size: 60px;
+        font-family: 'Noto Nastaliq Urdu', serif;
+        color: rgba(255,255,255,0.03);
+        pointer-events: none;
+    }
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 15px;
+}
+
+    .main-title i {
+        color: #ffc107;
+        margin-right: 15px;
+    }
+
+.sub-title {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Search Bar */
+.search-wrapper {
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.search-input {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px 0 0 50px;
+}
+
+    .search-input:focus {
+        background: rgba(255,255,255,0.15);
+        border-color: #ffc107;
+        box-shadow: none;
+        color: white;
+    }
+
+    .search-input::placeholder {
+        color: rgba(255,255,255,0.6);
+    }
+
+.search-btn {
+    background: #ffc107;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 0 50px 50px 0;
+    color: #0a2a1a;
+    font-weight: 600;
+}
+
+    .search-btn:hover {
+        background: #e0a800;
+        color: white;
+    }
+
+/* Galaxy Orbit */
+.galaxy-container {
+    margin: 30px auto;
+    position: relative;
+    width: 400px;
+    height: 400px;
+}
+
+.quran-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110px;
+    height: 110px;
+    background: linear-gradient(135deg, #1a4a2a, #0a2a1a);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #ffc107;
+    box-shadow: 0 0 40px rgba(255,193,7,0.4);
+    z-index: 20;
+    animation: pulse 2s infinite;
+}
+
+    .quran-center i {
+        font-size: 40px;
+        color: #ffc107;
+        margin-bottom: 5px;
+    }
+
+    .quran-center span {
+        font-size: 14px;
+        color: white;
+        font-weight: 600;
+    }
+
+.orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 360px;
+    height: 360px;
+    margin: -180px 0 0 -180px;
+    border-radius: 50%;
+    animation: spin 25s linear infinite;
+}
+
+.orbit-book {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,193,7,0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .orbit-book:hover {
+        transform: scale(1.1);
+        background: rgba(255,193,7,0.25);
+        border-color: #ffc107;
+    }
+
+    .orbit-book i {
+        font-size: 24px;
+        color: #ffc107;
+        margin-bottom: 5px;
+    }
+
+    .orbit-book span {
+        font-size: 10px;
+        color: white;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    /* Book Positions */
+    .orbit-book:nth-child(1) {
+        top: -40px;
+        left: 140px;
+    }
+
+    .orbit-book:nth-child(2) {
+        top: 140px;
+        right: -40px;
+        left: auto;
+    }
+
+    .orbit-book:nth-child(3) {
+        bottom: -40px;
+        left: 140px;
+        top: auto;
+    }
+
+    .orbit-book:nth-child(4) {
+        top: 140px;
+        left: -40px;
+    }
+
+    .orbit-book:nth-child(5) {
+        top: 25px;
+        left: 25px;
+    }
+
+    .orbit-book:nth-child(6) {
+        bottom: 25px;
+        right: 25px;
+        top: auto;
+        left: auto;
+    }
+
+    .orbit-book:nth-child(7) {
+        top: 60px;
+        right: 60px;
+    }
+
+    .orbit-book:nth-child(8) {
+        bottom: 60px;
+        left: 60px;
+    }
+
+.orbit-book {
+    animation: counterSpin 25s linear infinite;
+}
+
+/* Portal Buttons */
+.btn-portal {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-student {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+    .btn-student:hover {
+        background: white;
+        color: #0a2a1a;
+        transform: translateY(-3px);
+    }
+
+.btn-librarian {
+    background: #ffc107;
+    border: 2px solid #ffc107;
+    color: #0a2a1a;
+}
+
+    .btn-librarian:hover {
+        background: transparent;
+        color: #ffc107;
+        transform: translateY(-3px);
+    }
+
+/* Cards */
+.stat-card, .feature-card, .hover-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .stat-card:hover, .feature-card:hover, .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+/* ========================================
+   ANIMATIONS (KEYFRAMES)
+   ======================================== */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counterSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(255,193,7,0.3);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 0 0 50px rgba(255,193,7,0.6);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(255,193,7,0.3);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .sub-title {
+        font-size: 1rem;
+    }
+
+    .galaxy-container {
+        width: 320px;
+        height: 320px;
+    }
+
+    .orbit-ring {
+        width: 280px;
+        height: 280px;
+        margin: -140px 0 0 -140px;
+    }
+
+    .orbit-book {
+        width: 65px;
+        height: 65px;
+    }
+
+        .orbit-book i {
+            font-size: 20px;
+        }
+
+    .quran-center {
+        width: 85px;
+        height: 85px;
+    }
+
+    .hero-section::after {
+        font-size: 30px;
+        bottom: 10px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .galaxy-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .orbit-ring {
+        width: 240px;
+        height: 240px;
+        margin: -120px 0 0 -120px;
+    }
+
+    .orbit-book {
+        width: 55px;
+        height: 55px;
+    }
+
+    .portal-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-portal {
+        width: 200px;
+        justify-content: center;
+    }
+}

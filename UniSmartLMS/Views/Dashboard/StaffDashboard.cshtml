@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Staff Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-secondary text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-user-tie me-3"></i>Staff Dashboard</h2>
+                <p class="mb-0">Welcome to UniSmartLMS Staff Portal</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-book-open fa-3x text-primary mb-3"></i>
+                    <h4>My Loans</h4>
+                    <p>View books you have borrowed</p>
+                    <a href="@Url.Action("Index", "Issuance")" class="btn btn-primary">View Loans</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-search fa-3x text-info mb-3"></i>
+                    <h4>Browse Books</h4>
+                    <p>Explore library collection</p>
+                    <a href="/StaffCatalog/Books" class="btn btn-info w-100 mb-2">
+                        <i class="fas fa-book-open me-2"></i>Browse All Books
+                    </a>
+                    <a href="/SmartLibrary/Index" class="btn btn-success w-100">
+                        <i class="fas fa-brain me-2"></i>AI Smart Library
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 h-100">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-alt fa-3x text-danger mb-3"></i>
+                    <h4>Research</h4>
+                    <p>Access research papers</p>
+                    <a href="/Research/Index" class="btn btn-danger w-100 mb-2">
+                        <i class="fas fa-file-alt me-2"></i>Research Papers
+                    </a>
+                    <a href="/BorrowRequest/MyRequests" class="btn btn-warning w-100">
+                        <i class="fas fa-list me-2"></i>My Requests
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

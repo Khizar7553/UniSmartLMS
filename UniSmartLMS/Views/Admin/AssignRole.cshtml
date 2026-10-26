@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+@model IEnumerable<UniSmartLMS.Models.AppUser>
+
+@{
+    ViewData["Title"] = "Assign Roles";
+    var userRoles = ViewBag.UserRoles as Dictionary<string, string>;
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-user-tag me-2"></i>Assign User Roles</h4>
+        </div>
+        <div class="card-body">
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show">
+                    <i class="fas fa-check-circle me-2"></i> @TempData["Success"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <i class="fas fa-exclamation-triangle me-2"></i> @TempData["Error"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Available Roles:</strong> Student, Faculty,Staff, Librarian, Admin, Visitor
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Email</th>
+                            <th>Full Name</th>
+                            <th>Current Role</th>
+                            <th>Assign New Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            var currentRole = userRoles?.ContainsKey(user.Id) == true ? userRoles[user.Id] : "Not Assigned";
+                            <tr>
+                                <td>@user.Email</td>
+                                <td>@user.FullName</td>
+                                <td>
+                                    @if (currentRole != "Not Assigned")
+                                    {
+                                        <span class="badge bg-success">@currentRole</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Not Assigned</span>
+                                    }
+                                </td>
+                                <td>
+                                    <form asp-action="AssignRole" method="post" class="row g-2">
+                                        <input type="hidden" name="userId" value="@user.Id" />
+                                        <div class="col-8">
+                                            <select name="roleName" class="form-select" required>
+                                                <option value="">-- Select Role --</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Faculty">Faculty</option>
+                                                <option value="Staff">Staff</option>
+                                                <option value="Librarian">Librarian</option>
+                                                <option value="Admin">Admin</option>
+                                                <option value="Visitor">Visitor</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="submit" class="btn btn-primary w-100">
+                                                <i class="fas fa-save me-1"></i>Assign
+                                            </button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

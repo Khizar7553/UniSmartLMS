@@ -1,0 +1,103 @@
+﻿@model UniSmartLMS.Models.SectionD_People.Party
+
+@{
+    ViewData["Title"] = "Party Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>Party Details</h3>
+                </div>
+                <div class="card-body p-4">
+                    <dl class="row">
+                        <dt class="col-sm-3">ID</dt>
+                        <dd class="col-sm-9">@Model.Id</dd>
+
+                        <dt class="col-sm-3">Name</dt>
+                        <dd class="col-sm-9">@Model.PartyName</dd>
+
+                        <dt class="col-sm-3">Email</dt>
+                        <dd class="col-sm-9">@Model.Email</dd>
+
+                        <dt class="col-sm-3">Contact</dt>
+                        <dd class="col-sm-9">@Model.PartyContact</dd>
+
+                        <dt class="col-sm-3">Position</dt>
+                        <dd class="col-sm-9">@Model.Position?.Category</dd>
+
+                        <dt class="col-sm-3">Party Type</dt>
+                        <dd class="col-sm-9">
+                            @if (Model.PartyTypeId == 1)
+                            {
+                                <span>Student</span>
+                            }
+                            else if (Model.PartyTypeId == 2)
+                            {
+
+                                <span>Faculty</span>
+                            }
+                            else if (Model.PartyTypeId == 3)
+                            {
+
+                                <span>Staff</span>
+                            }
+                            else if (Model.PartyTypeId == 4)
+                            {
+
+                                <span>Librarian</span>
+                            }
+                            else if (Model.PartyTypeId == 5)
+                            {
+
+                                <span>Admin</span>
+                            }
+                            else if (Model.PartyTypeId == 6)
+                            {
+
+                                <span>Visitor</span>
+                            }
+                            else if (Model.PartyTypeId == 7)
+                            {
+
+                                <span>Vendor</span>
+                            }
+                            else if (Model.PartyTypeId == 8)
+                            {
+
+                                <span>Author</span>
+                            }
+                            else
+                            {
+
+                                <span>Not Specified</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-3">Status</dt>
+                        <dd class="col-sm-9">
+                            @if (Model.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactive</span>
+                            }
+                        </dd>
+
+                        <dt class="col-sm-3">Created At</dt>
+                        <dd class="col-sm-9">@Model.CreatedAt.ToString("dd MMM yyyy, hh:mm tt")</dd>
+                    </dl>
+                    <hr />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Edit</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

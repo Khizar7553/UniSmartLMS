@@ -1,0 +1,119 @@
+﻿@model UniSmartLMS.Models.SectionC_Catalog.ItemInfo
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Book</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label asp-for="Title" class="form-label fw-bold">Title</label>
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="ISBN" class="form-label fw-bold">ISBN</label>
+                                <input asp-for="ISBN" class="form-control" />
+                                <span asp-validation-for="ISBN" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="SubjectHeadingId" class="form-label fw-bold">Subject</label>
+                                <select asp-for="SubjectHeadingId" class="form-control" asp-items="ViewBag.SubjectList">
+                                    <option value="">-- Select Subject --</option>
+                                </select>
+                                <span asp-validation-for="SubjectHeadingId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LanguageId" class="form-label fw-bold">Language</label>
+                                <select asp-for="LanguageId" class="form-control" asp-items="ViewBag.LanguageList">
+                                    <option value="">-- Select Language --</option>
+                                </select>
+                                <span asp-validation-for="LanguageId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="PublisherInfoId" class="form-label fw-bold">Publisher</label>
+                                <select asp-for="PublisherInfoId" class="form-control" asp-items="ViewBag.PublisherList">
+                                    <option value="">-- Select Publisher --</option>
+                                </select>
+                                <span asp-validation-for="PublisherInfoId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="PublishDate" class="form-label fw-bold">Publish Date</label>
+                                <input asp-for="PublishDate" type="date" class="form-control" />
+                                <span asp-validation-for="PublishDate" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="TotalPages" class="form-label fw-bold">Total Pages</label>
+                                <input asp-for="TotalPages" class="form-control" />
+                                <span asp-validation-for="TotalPages" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="BindingType" class="form-label fw-bold">Binding Type</label>
+                                <select asp-for="BindingType" class="form-control">
+                                    <option value="">-- Select Binding --</option>
+                                    <option value="Hardcover">Hardcover</option>
+                                    <option value="Paperback">Paperback</option>
+                                    <option value="Spiral">Spiral</option>
+                                </select>
+                                <span asp-validation-for="BindingType" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Keywords" class="form-label fw-bold">Keywords</label>
+                            <input asp-for="Keywords" class="form-control" />
+                            <span asp-validation-for="Keywords" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="AddedToLibraryDate" class="form-label fw-bold">Added to Library Date</label>
+                            <input asp-for="AddedToLibraryDate" type="date" class="form-control" />
+                            <span asp-validation-for="AddedToLibraryDate" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save Changes</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

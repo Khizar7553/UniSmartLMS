@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Create User";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0 py-3">
+                    <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i>Create New User</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <!-- Full Name -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-user me-2"></i>Full Name</label>
+                            <input type="text" name="fullName" class="form-control" placeholder="e.g., Muhammad Ahmad" required />
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-envelope me-2"></i>Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="example@university.edu.pk" required />
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-phone me-2"></i>Contact Number</label>
+                            <input type="tel" name="contact" class="form-control" placeholder="+92 300 1234567" required />
+                        </div>
+
+                        <!-- Preferred Language -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-language me-2"></i>Preferred Language</label>
+                            <select name="preferredLanguage" class="form-control">
+                                <option value="English">🇬🇧 English</option>
+                                <option value="Urdu">🇵🇰 اردو</option>
+                                <option value="RomanUrdu">🇵🇰 Roman Urdu</option>
+                            </select>
+                        </div>
+
+                        <!-- User Type -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-user-tag me-2"></i>User Type</label>
+                            <select name="userType" class="form-control" id="userType" required>
+                                <option value="">-- Select User Type --</option>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <option value="Student">🎓 Student</option>
+                                    <option value="Faculty">👨‍🏫 Faculty</option>
+                                    <option value="Staff">👔 Staff</option>
+                                    <option value="Librarian">📚 Librarian</option>
+                                    <option value="Admin">⚙️ Admin</option>
+                                    <option value="Visitor">👤 Visitor</option>
+                                }
+                                else
+                                {
+                                    <option value="Student">🎓 Student</option>
+                                    <option value="Faculty">👨‍🏫 Faculty</option>
+                                    <option value="Staff">👔 Staff</option>
+                                    <option value="Visitor">👤 Visitor</option>
+                                }
+                            </select>
+                        </div>
+
+                        <!-- Department (for Student/Faculty) -->
+                        <div class="mb-3" id="departmentDiv" style="display:none">
+                            <label class="form-label fw-bold"><i class="fas fa-building me-2"></i>Department</label>
+                            <select name="departmentId" class="form-control" asp-items="ViewBag.DepartmentList">
+                                <option value="">-- Select Department --</option>
+                            </select>
+                        </div>
+
+                        <!-- Registration Number (for Student only) -->
+                        <div class="mb-3" id="registrationDiv" style="display:none">
+                            <label class="form-label fw-bold"><i class="fas fa-id-card me-2"></i>Registration Number</label>
+                            <input type="text" name="registrationNumber" class="form-control" placeholder="e.g., 2024-CS-101" />
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-lock me-2"></i>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Minimum 4 characters" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 py-2">
+                            <i class="fas fa-user-check me-2"></i>Create User
+                        </button>
+                        <a asp-action="UserManagement" class="btn btn-outline-secondary w-100 mt-2">
+                            <i class="fas fa-arrow-left me-2"></i>Cancel
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const userTypeSelect = document.getElementById('userType');
+    const departmentDiv = document.getElementById('departmentDiv');
+    const registrationDiv = document.getElementById('registrationDiv');
+
+    function toggleFields() {
+        const selectedType = userTypeSelect.value;
+
+        // Show department for Student or Faculty
+        if (selectedType === 'Student' || selectedType === 'Faculty') {
+            departmentDiv.style.display = 'block';
+        } else {
+            departmentDiv.style.display = 'none';
+        }
+
+        // Show registration only for Student
+        if (selectedType === 'Student') {
+            registrationDiv.style.display = 'block';
+        } else {
+            registrationDiv.style.display = 'none';
+        }
+    }
+
+    userTypeSelect.addEventListener('change', toggleFields);
+    toggleFields(); // Run on page load
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

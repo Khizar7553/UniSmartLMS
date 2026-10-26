@@ -1,0 +1,47 @@
+﻿/* ========================================
+   Faculty Dashboard Specific Styles
+======================================== */
+
+/* Research Stats */
+.research-stats {
+    text-align: center;
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.research-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.research-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* Publication Card */
+.publication-card {
+    border-left: 4px solid var(--primary);
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+    .publication-card:hover {
+        transform: translateX(5px);
+        background-color: var(--light);
+    }
+
+/* Course Reserve Item */
+.course-reserve-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+    .course-reserve-item:last-child {
+        border-bottom: none;
+    }

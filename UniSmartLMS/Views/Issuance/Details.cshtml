@@ -1,0 +1,68 @@
+﻿@model UniSmartLMS.Models.SectionE_Circulation.Issuance
+
+@{
+    ViewData["Title"] = "Issuance Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>Issuance Details</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Member</dt>
+                                <dd>@Model.LibraryMember?.CardNo</dd>
+
+                                <dt>Book Barcode</dt>
+                                <dd>@Model.ItemCopy?.Barcode</dd>
+
+                                <dt>Book Title</dt>
+                                <dd>@Model.ItemCopy?.ItemInfo?.Title</dd>
+
+                                <dt>Issue Date</dt>
+                                <dd>@Model.IssueDate.ToString("dd MMM yyyy")</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Due Date</dt>
+                                <dd>@Model.IssueDate.AddDays(Model.DurationNumber).ToString("dd MMM yyyy")</dd>
+
+                                <dt>Duration</dt>
+                                <dd>@Model.Duration?.Name (@Model.DurationNumber days)</dd>
+
+                                <dt>Fine Accrued</dt>
+                                <dd>Rs. @Model.FineAccrued.ToString("N2")</dd>
+
+                                <dt>Renewals Used</dt>
+                                <dd>@Model.RenewalsUsed</dd>
+
+                                <dt>Status</dt>
+                                <dd>
+                                    @if (Model.IsActive)
+                                    {
+                                        <span class="badge bg-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Closed</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Edit</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

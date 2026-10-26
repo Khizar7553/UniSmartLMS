@@ -1,0 +1,70 @@
+﻿/* ========================================
+   STUDENT DASHBOARD SPECIFIC STYLES
+   ======================================== */
+
+/* Loan Table */
+.loan-table .due-soon {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 3px solid #ffc107;
+}
+
+.loan-table .due-overdue {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 3px solid #dc3545;
+}
+
+/* Fine Total */
+.fine-total {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #dc3545;
+}
+
+/* Reservation Status */
+.reservation-available {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-left: 3px solid #28a745;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.reservation-waiting {
+    background: linear-gradient(135deg, #fff3cd, #ffe8a1);
+    border-left: 3px solid #ffc107;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* Reading Progress */
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--primary-green), var(--gold));
+    transition: width 0.5s ease;
+}
+
+/* Book Grid */
+.book-grid-item {
+    transition: all 0.3s ease;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+    .book-grid-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.book-cover-placeholder {
+    background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green-dark));
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .book-cover-placeholder i {
+        font-size: 3rem;
+        color: var(--gold);
+        opacity: 0.7;
+    }

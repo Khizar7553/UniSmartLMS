@@ -1,0 +1,47 @@
+﻿@model UniSmartLMS.Models.AppUser
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-warning">
+                    <h4><i class="fas fa-edit me-2"></i>Edit Profile</h4>
+                </div>
+                <div class="card-body">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success">@TempData["Success"]</div>
+                    }
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="fullName" value="@Model.FullName" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" value="@Model.Email" class="form-control" disabled readonly />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input type="text" name="contact" value="@Model.Party?.PartyContact" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">User Type</label>
+                            <input type="text" value="@Model.UserType" class="form-control" disabled readonly />
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100">Save Changes</button>
+                        <a asp-action="Profile" class="btn btn-secondary w-100 mt-2">Cancel</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

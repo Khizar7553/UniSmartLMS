@@ -1,0 +1,98 @@
+﻿@model UniSmartLMS.Models.SectionD_People.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Student</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PartyId" class="form-label fw-bold">Student Name</label>
+                                <select asp-for="PartyId" class="form-control" asp-items="ViewBag.PartyList">
+                                    <option value="">-- Select Party --</option>
+                                </select>
+                                <span asp-validation-for="PartyId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="RegistrationNumber" class="form-label fw-bold">Registration Number</label>
+                                <input asp-for="RegistrationNumber" class="form-control" />
+                                <span asp-validation-for="RegistrationNumber" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="CandidateId" class="form-label fw-bold">Candidate ID</label>
+                                <input asp-for="CandidateId" class="form-control" />
+                                <span asp-validation-for="CandidateId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="DegreeProgramId" class="form-label fw-bold">Degree Program ID</label>
+                                <input asp-for="DegreeProgramId" class="form-control" />
+                                <span asp-validation-for="DegreeProgramId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="DegreeLevelId" class="form-label fw-bold">Degree Level ID</label>
+                                <input asp-for="DegreeLevelId" class="form-control" />
+                                <span asp-validation-for="DegreeLevelId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Quota" class="form-label fw-bold">Quota</label>
+                                <select asp-for="Quota" class="form-control">
+                                    <option value="">-- Select Quota --</option>
+                                    <option value="Open Merit">Open Merit</option>
+                                    <option value="Self Finance">Self Finance</option>
+                                    <option value="Overseas">Overseas</option>
+                                    <option value="Disabled">Disabled</option>
+                                    <option value="Sports">Sports</option>
+                                </select>
+                                <span asp-validation-for="Quota" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="TimingId" class="form-label fw-bold">Timing ID</label>
+                                <input asp-for="TimingId" class="form-control" />
+                                <span asp-validation-for="TimingId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="ProgramSessionId" class="form-label fw-bold">Program Session ID</label>
+                                <input asp-for="ProgramSessionId" class="form-control" />
+                                <span asp-validation-for="ProgramSessionId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

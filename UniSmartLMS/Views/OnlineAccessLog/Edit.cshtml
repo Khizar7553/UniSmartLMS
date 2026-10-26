@@ -1,0 +1,77 @@
+﻿@model UniSmartLMS.Models.SectionH_Digital.OnlineAccessLog
+
+@{
+    ViewData["Title"] = "Edit Access Log";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Access Log</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="DigitalResourceId" class="form-label fw-bold">Digital Resource</label>
+                                <select asp-for="DigitalResourceId" class="form-control" asp-items="ViewBag.ResourceList">
+                                    <option value="">-- Select Resource --</option>
+                                </select>
+                                <span asp-validation-for="DigitalResourceId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LibraryMemberId" class="form-label fw-bold">Member</label>
+                                <select asp-for="LibraryMemberId" class="form-control" asp-items="ViewBag.MemberList">
+                                    <option value="">-- Select Member --</option>
+                                </select>
+                                <span asp-validation-for="LibraryMemberId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="AccessDate" class="form-label fw-bold">Access Date & Time</label>
+                                <input asp-for="AccessDate" type="datetime-local" class="form-control" />
+                                <span asp-validation-for="AccessDate" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="AccessType" class="form-label fw-bold">Access Type</label>
+                                <select asp-for="AccessType" class="form-control">
+                                    <option value="">-- Select Type --</option>
+                                    <option value="View">View</option>
+                                    <option value="Download">Download</option>
+                                    <option value="Print">Print</option>
+                                    <option value="Search">Search</option>
+                                </select>
+                                <span asp-validation-for="AccessType" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

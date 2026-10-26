@@ -1,0 +1,109 @@
+﻿@model UniSmartLMS.Models.SectionC_Catalog.ItemCopy
+
+@{
+    ViewData["Title"] = "Add Book Copy";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Add New Book Copy</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ItemInfoId" class="form-label fw-bold">Book</label>
+                                <select asp-for="ItemInfoId" class="form-control" asp-items="ViewBag.ItemList">
+                                    <option value="">-- Select Book --</option>
+                                </select>
+                                <span asp-validation-for="ItemInfoId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Barcode" class="form-label fw-bold">Barcode</label>
+                                <input asp-for="Barcode" class="form-control" placeholder="BAR-001" />
+                                <span asp-validation-for="Barcode" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="AccessionNumber" class="form-label fw-bold">Accession Number</label>
+                                <input asp-for="AccessionNumber" class="form-control" placeholder="Auto-generated" />
+                                <span class="text-muted small">Leave empty for auto-generation</span>
+                                <span asp-validation-for="AccessionNumber" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="UnitCost" class="form-label fw-bold">Unit Cost (PKR)</label>
+                                <input asp-for="UnitCost" class="form-control" placeholder="500" />
+                                <span asp-validation-for="UnitCost" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="ConditionRemarks" class="form-label fw-bold">Condition</label>
+                                <select asp-for="ConditionRemarks" class="form-control">
+                                    <option value="">-- Select Condition --</option>
+                                    <option value="New">New</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Fair">Fair</option>
+                                    <option value="Poor">Poor</option>
+                                    <option value="Damaged">Damaged</option>
+                                </select>
+                                <span asp-validation-for="ConditionRemarks" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LibraryBranchId" class="form-label fw-bold">Library Branch</label>
+                                <select asp-for="LibraryBranchId" class="form-control" asp-items="ViewBag.BranchList">
+                                    <option value="">-- Select Branch --</option>
+                                </select>
+                                <span asp-validation-for="LibraryBranchId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LibraryRackId" class="form-label fw-bold">Rack (Almari)</label>
+                                <select asp-for="LibraryRackId" class="form-control" asp-items="ViewBag.RackList">
+                                    <option value="">-- Select Rack --</option>
+                                </select>
+                                <span asp-validation-for="LibraryRackId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LibraryShelfId" class="form-label fw-bold">Shelf (Dabba)</label>
+                                <select asp-for="LibraryShelfId" class="form-control" asp-items="ViewBag.ShelfList">
+                                    <option value="">-- Select Shelf --</option>
+                                </select>
+                                <span asp-validation-for="LibraryShelfId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" checked />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Auto-generated:</strong> Accession Number will be generated automatically in format: ACC-{BranchId}-{Year}-{Sequence}
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Create Copy</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

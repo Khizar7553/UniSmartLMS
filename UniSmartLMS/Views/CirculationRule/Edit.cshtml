@@ -1,0 +1,112 @@
+﻿@model UniSmartLMS.Models.SectionE_Circulation.CirculationRule
+
+@{
+    ViewData["Title"] = "Edit Circulation Rule";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Circulation Rule</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PartyId" class="form-label fw-bold">Member Type</label>
+                                <select asp-for="PartyId" class="form-control" asp-items="ViewBag.PartyList">
+                                    <option value="">-- Select Member Type --</option>
+                                </select>
+                                <span asp-validation-for="PartyId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LibraryBranchId" class="form-label fw-bold">Library Branch</label>
+                                <select asp-for="LibraryBranchId" class="form-control" asp-items="ViewBag.BranchList">
+                                    <option value="">-- Select Branch --</option>
+                                </select>
+                                <span asp-validation-for="LibraryBranchId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="MaxCurrentLoans" class="form-label fw-bold">Max Current Loans</label>
+                                <input asp-for="MaxCurrentLoans" class="form-control" />
+                                <span asp-validation-for="MaxCurrentLoans" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="MaxCurrentReserves" class="form-label fw-bold">Max Current Reserves</label>
+                                <input asp-for="MaxCurrentReserves" class="form-control" />
+                                <span asp-validation-for="MaxCurrentReserves" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LoanDays" class="form-label fw-bold">Loan Days</label>
+                                <input asp-for="LoanDays" class="form-control" />
+                                <span asp-validation-for="LoanDays" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="GraceDay" class="form-label fw-bold">Grace Days</label>
+                                <input asp-for="GraceDay" class="form-control" />
+                                <span asp-validation-for="GraceDay" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="MaxRenewals" class="form-label fw-bold">Max Renewals</label>
+                                <input asp-for="MaxRenewals" class="form-control" />
+                                <span asp-validation-for="MaxRenewals" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="OverdueFinePerDay" class="form-label fw-bold">Overdue Fine/Day (Rs.)</label>
+                                <input asp-for="OverdueFinePerDay" class="form-control" />
+                                <span asp-validation-for="OverdueFinePerDay" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="MaxFinePerItem" class="form-label fw-bold">Max Fine Per Item (Rs.)</label>
+                                <input asp-for="MaxFinePerItem" class="form-control" />
+                                <span asp-validation-for="MaxFinePerItem" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="DamageValue" class="form-label fw-bold">Damage Value (Rs.)</label>
+                                <input asp-for="DamageValue" class="form-control" />
+                                <span asp-validation-for="DamageValue" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LostChargesItem" class="form-label fw-bold">Lost Charges Item</label>
+                                <input asp-for="LostChargesItem" class="form-control" />
+                                <span asp-validation-for="LostChargesItem" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

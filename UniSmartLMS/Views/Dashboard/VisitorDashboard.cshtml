@@ -1,0 +1,54 @@
+﻿﻿@{
+ViewData["Title"] = "Visitor Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-info text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-globe me-3"></i>Visitor Dashboard</h2>
+                <p class="mb-0">Limited Access - Search and view digital resources only</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-8">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-book me-2"></i>Browse Books</h5>
+                </div>
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-book-open fa-4x text-primary mb-3"></i>
+                    <h4>Explore Our Collection</h4>
+                    <p class="text-muted">Browse through thousands of books in our library</p>
+                    <a href="/VisitorCatalog/Books" class="btn btn-primary btn-lg px-5">
+                        <i class="fas fa-book-open me-2"></i>Browse All Books
+                    </a>
+                    <a href="/SmartLibrary/Index" class="btn btn-success btn-lg px-5 ms-3">
+                        <i class="fas fa-brain me-2"></i>AI Smart Library
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Library Info</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-clock text-success me-2"></i> Mon-Sat: 8 AM - 8 PM</li>
+                        <li class="mt-2"><i class="fas fa-phone text-info me-2"></i> +92 42 1234 5678</li>
+                        <li class="mt-2"><i class="fas fa-envelope text-warning me-2"></i> library@unismartlms.edu.pk</li>
+                    </ul>
+                    <hr />
+                    <div class="alert alert-warning text-center small">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Visitor accounts cannot borrow books. Please register as Student/Faculty to borrow.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

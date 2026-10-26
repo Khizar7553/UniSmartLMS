@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using UniSmartLMS.Services
+@using UniSmartLMS.Models
+@inject UserManager<AppUser> UserManager
+@inject IAIAssistantService AIAssistant
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var greeting = currentUser != null ? await AIAssistant.GetGreetingAsync(currentUser) : "Welcome to UniSmartLMS!";
+}
+
+<!-- CSS -->
+<link rel="stylesheet" href="~/css/ai-avatar.css" />
+
+<!-- AI Avatar Floating Button -->
+<div class="ai-avatar-btn" id="aiAvatarBtn">
+    <i class="fas fa-robot fa-2x text-white"></i>
+</div>
+
+<!-- Chat Window -->
+<div class="ai-chat-window" id="aiChatWindow">
+    <div class="ai-chat-header">
+        <div>
+            <div class="ai-avatar-icon d-inline-block">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h6 class="d-inline">UniSmart AI Assistant</h6>
+        </div>
+        <button class="ai-chat-close" id="aiChatClose">&times;</button>
+    </div>
+
+    <div class="ai-chat-messages" id="aiChatMessages">
+        <div class="ai-message ai">
+            <div class="ai-message-bubble">
+                <i class="fas fa-robot text-success me-1"></i>
+                <strong>AI Assistant</strong>
+                <button class="ai-speaker-btn" onclick="speakThis('@greeting.Replace("'", "\\'")')">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+                <br />@greeting<br /><br />
+
+                💡 <strong>Tips for best results:</strong><br />
+                • I understand spelling mistakes!<br />
+                • Try: "crete universty" or "ad book"<br />
+                • Speak clearly in a quiet place<br />
+                • Type if voice isn't working<br /><br />
+
+                📋 <strong>Try these commands:</strong><br />
+                • "create university"<br />
+                • "add book"<br />
+                • "issue book"<br />
+                • "my loans"<br />
+                • "manage users"<br /><br />
+
+                <i class="fas fa-microphone text-muted me-1"></i>
+                <small>Click the 🎤 button to speak!</small>
+            </div>
+            <div class="ai-message-time">@DateTime.Now.ToString("hh:mm tt")</div>
+        </div>
+    </div>
+
+    <div class="ai-chat-input">
+        <input type="text" id="aiChatInput" placeholder="Type or speak your question..." />
+        <button id="aiVoiceBtn" class="ai-voice-btn" title="Click to speak">
+            <i class="fas fa-microphone"></i>
+        </button>
+        <button id="aiChatSend">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="~/js/ai-avatar.js"></script>

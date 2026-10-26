@@ -1,0 +1,59 @@
+WHAT IS OBJECT-ORIENTED PROGRAMMING?
+OOP organizes code into objects with data and methods. Principles: encapsulation, inheritance, polymorphism, abstraction.
+
+WHAT IS FUNCTIONAL PROGRAMMING?
+Functional programming treats computation as mathematical functions. Avoids mutable state and side effects.
+
+WHAT IS PROCEDURAL PROGRAMMING?
+Procedural programming uses functions and global data. Linear, step-by-step execution.
+
+WHAT IS THE DIFFERENCE BETWEEN CLASS AND OBJECT?
+Class is a blueprint/template. Object is an instance of a class created from that blueprint.
+
+WHAT IS THE DIFFERENCE BETWEEN ABSTRACT CLASS AND INTERFACE?
+Abstract class can have implemented methods (single inheritance). Interface has only declarations (multiple inheritance).
+
+WHAT IS THE DIFFERENCE BETWEEN METHOD OVERLOADING AND OVERRIDING?
+Overloading: same name, different parameters (compile-time). Overriding: redefines parent method in child (runtime).
+
+WHAT IS THE DIFFERENCE BETWEEN STATIC AND INSTANCE?
+Static belongs to class (shared across all instances). Instance belongs to specific object.
+
+WHAT IS THE DIFFERENCE BETWEEN COMPILER AND INTERPRETER?
+Compiler translates entire program before execution (C, C++, Go). Interpreter executes line by line (Python, JavaScript).
+
+WHAT IS THE DIFFERENCE BETWEEN VALUE TYPE AND REFERENCE TYPE?
+Value type stores data directly (stack). Reference type stores reference to data (heap).
+
+WHAT IS THE DIFFERENCE BETWEEN STACK AND HEAP?
+Stack stores local variables (fast, fixed size). Heap stores dynamic objects (slower, flexible).
+
+WHAT IS THE DIFFERENCE BETWEEN PROCESS AND THREAD?
+Process is independent program (separate memory). Thread is lightweight unit within process (shared memory).
+
+WHAT IS THE DIFFERENCE BETWEEN CONCURRENCY AND PARALLELISM?
+Concurrency handles multiple tasks by interleaving (one core). Parallelism executes simultaneously (multiple cores).
+
+WHAT IS THE DIFFERENCE BETWEEN SYNCHRONOUS AND ASYNCHRONOUS?
+Synchronous waits for completion (blocks). Asynchronous continues execution (non-blocking).
+
+WHAT IS THE DIFFERENCE BETWEEN ARRAY AND LINKED LIST?
+Array: contiguous memory, fixed size, fast access. Linked list: nodes connected by pointers, dynamic size, slow access.
+
+WHAT IS THE DIFFERENCE BETWEEN STACK AND QUEUE?
+Stack: LIFO (Last In First Out). Queue: FIFO (First In First Out).
+
+WHAT IS RECURSION?
+Recursion is when a function calls itself. Requires base case to prevent infinite loops.
+
+WHAT IS BIG O NOTATION?
+Big O describes algorithm complexity/efficiency. Examples: O(1) constant, O(n) linear, O(n²) quadratic, O(log n) logarithmic.
+
+WHAT IS A DATA STRUCTURE?
+Data structure organizes and stores data efficiently. Examples: arrays, linked lists, trees, graphs, hash tables.
+
+WHAT IS AN ALGORITHM?
+Algorithm is a step-by-step procedure for solving a problem.
+
+WHAT IS API?
+API (Application Programming Interface) defines how software components interact.

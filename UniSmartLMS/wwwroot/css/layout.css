@@ -1,0 +1,207 @@
+﻿/* ========================================
+   UniSmartLMS - LAYOUT STYLES
+   Pakistan Professional Design
+   ======================================== */
+
+:root {
+    --primary-green: #1a472a;
+    --primary-green-light: #2a5a3a;
+    --primary-green-dark: #0d2b1a;
+    --gold: #ffc107;
+    --gold-dark: #e0a800;
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-700: #495057;
+    --gray-900: #212529;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.12);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+    --shadow-xl: 0 12px 32px rgba(0,0,0,0.18);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    color: var(--gray-900);
+}
+
+/* ========================================
+   NAVBAR - Pakistan Green Theme
+   ======================================== */
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+    box-shadow: var(--shadow-lg);
+    padding: 0.8rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease;
+}
+
+    .navbar-brand:hover {
+        transform: scale(1.02);
+    }
+
+.nav-link {
+    font-weight: 500;
+    padding: 0.6rem 1rem !important;
+    margin: 0 2px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: rgba(255,255,255,0.9) !important;
+}
+
+    .nav-link:hover {
+        background: rgba(255,255,255,0.12);
+        color: var(--gold) !important;
+        transform: translateY(-2px);
+    }
+
+/* Dropdown Menus */
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-xl);
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    margin-top: 8px;
+    animation: fadeInDown 0.25s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.dropdown-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .dropdown-item i {
+        width: 22px;
+        font-size: 14px;
+        color: var(--primary-green);
+    }
+
+    .dropdown-item:hover {
+        background: linear-gradient(90deg, var(--gray-100), var(--gray-200));
+        padding-left: 1.8rem;
+        color: var(--primary-green);
+    }
+
+.dropdown-header {
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.75rem 1.2rem;
+}
+
+/* Mega Dropdown */
+.mega-dropdown {
+    position: static !important;
+}
+
+    .mega-dropdown .dropdown-menu {
+        width: 85%;
+        left: 7.5% !important;
+        right: auto !important;
+        min-width: 800px;
+        padding: 1.5rem;
+    }
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
+
+.main-content {
+    min-height: calc(100vh - 300px);
+    padding: 1.5rem;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 100%);
+    margin-top: 3rem;
+    border-top: 3px solid var(--gold);
+}
+
+    footer a {
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+        footer a:hover {
+            color: var(--gold) !important;
+            transform: translateX(3px);
+        }
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1200px) {
+    .mega-dropdown .dropdown-menu {
+        width: 95%;
+        left: 2.5% !important;
+        min-width: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        padding: 0.5rem 0;
+    }
+
+    .mega-dropdown .dropdown-menu {
+        position: absolute !important;
+        width: 100%;
+        left: 0 !important;
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+}

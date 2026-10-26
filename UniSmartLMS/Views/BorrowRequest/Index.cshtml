@@ -1,0 +1,125 @@
+﻿@model IEnumerable<UniSmartLMS.Models.SectionH_Digital.BorrowRequest>
+@{
+    ViewData["Title"] = "Borrow Requests - Admin";
+}
+
+<div class="container mt-4">
+    @Html.AntiForgeryToken()
+
+    <h2><i class="fas fa-clipboard-list me-2"></i>Borrow Requests</h2>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-4">
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <h3>@ViewBag.PendingCount</h3>
+                    <p>Pending</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h3>@ViewBag.ApprovedCount</h3>
+                    <p>Approved</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h3>@ViewBag.RejectedCount</h3>
+                    <p>Rejected</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body p-0">
+            <table class="table table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Member</th>
+                        <th>Book</th>
+                        <th>Request Date</th>
+                        <th>Remarks</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.LibraryMember?.Party?.PartyName<br />
+                                <small>@item.LibraryMember?.CardNo</small>
+                            </td>
+                            <td>
+                                @item.ItemCopy?.ItemInfo?.Title<br />
+                                <small>Barcode: @item.ItemCopy?.Barcode</small>
+                            </td>
+                            <td>@item.RequestDate.ToString("dd MMM yyyy")</td>
+                            <td>@item.MemberRemarks</td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-sm btn-success me-1" onclick="approve(@item.Id)">Approve & Issue</button>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="reject(@item.Id)">Reject</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function approve(id) {
+            var remarks = prompt("Enter approval remarks (member verified physically):");
+            if (remarks !== null) {
+                $.ajax({
+                    url: '/BorrowRequest/Approve',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        adminRemarks: remarks
+                    },
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + (xhr.responseText || 'Something went wrong'));
+                    }
+                });
+            }
+        }
+
+        function reject(id) {
+            var remarks = prompt("Enter rejection reason:");
+            if (remarks !== null && remarks !== "") {
+                $.ajax({
+                    url: '/BorrowRequest/Reject',
+                    type: 'POST',
+                    data: {
+                        id: id,
+                        adminRemarks: remarks
+                    },
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function(response) {
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + (xhr.responseText || 'Something went wrong'));
+                    }
+                });
+            }
+        }
+    </script>
+}

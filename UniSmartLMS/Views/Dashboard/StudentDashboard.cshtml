@@ -1,0 +1,499 @@
+﻿@{
+    ViewData["Title"] = "Student Dashboard";
+
+    var currentLoans = ViewBag.CurrentLoans as IEnumerable<UniSmartLMS.Models.SectionE_Circulation.Issuance> ?? new List<UniSmartLMS.Models.SectionE_Circulation.Issuance>();
+    var loanHistory = ViewBag.LoanHistory as IEnumerable<UniSmartLMS.Models.SectionE_Circulation.Issuance> ?? new List<UniSmartLMS.Models.SectionE_Circulation.Issuance>();
+    var fines = ViewBag.Fines as IEnumerable<UniSmartLMS.Models.SectionF_Fines.UserFine> ?? new List<UniSmartLMS.Models.SectionF_Fines.UserFine>();
+    var reservations = ViewBag.Reservations as IEnumerable<UniSmartLMS.Models.SectionE_Circulation.ReserveItem> ?? new List<UniSmartLMS.Models.SectionE_Circulation.ReserveItem>();
+    var recommendedBooks = ViewBag.RecommendedBooks as IEnumerable<UniSmartLMS.Models.SectionC_Catalog.ItemInfo> ?? new List<UniSmartLMS.Models.SectionC_Catalog.ItemInfo>();
+
+    var totalFine = ViewBag.TotalFine ?? 0;
+    var overdueCount = ViewBag.OverdueCount ?? 0;
+    var currentLoansCount = ViewBag.CurrentLoansCount ?? 0;
+    var totalBooksRead = ViewBag.TotalBooksRead ?? 0;
+    var memberName = ViewBag.MemberName ?? "Student User";
+    var cardNumber = ViewBag.CardNumber ?? "Not Issued";
+    var message = ViewBag.Message ?? "";
+}
+
+<style>
+    .stat-card {
+        transition: transform 0.2s;
+        border-radius: 15px;
+        border: none;
+    }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .book-card {
+        transition: all 0.2s;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+        .book-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+    .action-btn {
+        transition: all 0.2s;
+    }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+        }
+
+    .quick-link-card {
+        transition: all 0.3s;
+        border-radius: 12px;
+        cursor: pointer;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+    }
+
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.2);
+        }
+</style>
+
+<div class="container-fluid px-4 mt-3">
+
+    <div class="welcome-banner text-white p-4 mb-4 shadow rounded-4" style="background: linear-gradient(135deg, #1a4d8c, #0a2a4a);">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h2 class="fw-bold"><i class="fas fa-user-graduate me-3"></i>Welcome, @memberName</h2>
+                <p class="mb-0 opacity-75"><i class="fas fa-id-card me-2"></i>Card: @cardNumber</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <i class="fas fa-book-open fa-3x opacity-50"></i>
+            </div>
+        </div>
+
+        <!-- Quick Action Links -->
+        <div class="row g-3 mt-3">
+            <div class="col-md-4">
+                <a href="/BorrowRequest/Create" class="text-decoration-none">
+                    <div class="quick-link-card p-3 text-white text-center">
+                        <i class="fas fa-hand-holding-heart fa-2x mb-2"></i>
+                        <h6 class="mb-0 fw-bold">Request to Borrow</h6>
+                        <small>Submit book request</small>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/SmartLibrary/Index" class="text-decoration-none">
+                    <div class="quick-link-card p-3 text-white text-center">
+                        <i class="fas fa-brain fa-2x mb-2"></i>
+                        <h6 class="mb-0 fw-bold">AI Smart Library</h6>
+                        <small>AI recommendations</small>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Research/Index" class="text-decoration-none">
+                    <div class="quick-link-card p-3 text-white text-center">
+                        <i class="fas fa-file-alt fa-2x mb-2"></i>
+                        <h6 class="mb-0 fw-bold">Research Papers</h6>
+                        <small>Academic research</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert alert-warning alert-dismissible fade show shadow-sm mb-4 rounded-3">
+            <i class="fas fa-info-circle me-2"></i> @message
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card stat-card bg-primary text-white shadow">
+                <div class="card-body">
+                    <h3 class="display-4 fw-bold">@currentLoansCount</h3>
+                    <p class="mb-0">Current Loans</p>
+                    <small>Books in hand</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-warning text-white shadow">
+                <div class="card-body">
+                    <h3 class="display-4 fw-bold">₨ @totalFine.ToString("N0")</h3>
+                    <p class="mb-0">Total Fines</p>
+                    <small>Outstanding</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-info text-white shadow">
+                <div class="card-body">
+                    <h3 class="display-4 fw-bold">@reservations.Count()</h3>
+                    <p class="mb-0">Reservations</p>
+                    <small>Waiting for pickup</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-success text-white shadow">
+                <div class="card-body">
+                    <h3 class="display-4 fw-bold">@totalBooksRead</h3>
+                    <p class="mb-0">Books Read</p>
+                    <small>Lifetime</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (overdueCount > 0)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm mb-4 rounded-3">
+            <i class="fas fa-exclamation-triangle fs-4 me-3 float-start"></i>
+            <strong>⚠️ Overdue Alert!</strong> You have @overdueCount overdue book(s). Return immediately to avoid extra fines.
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Current Loans Section -->
+    <div class="card shadow-lg border-0 rounded-4 mb-4 overflow-hidden">
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0 fw-bold"><i class="fas fa-hand-holding-heart me-2"></i>My Current Loans</h5>
+        </div>
+        <div class="card-body p-0">
+            @if (currentLoans.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="ps-4">Book Title</th>
+                                <th>Barcode</th>
+                                <th>Issue Date</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th class="pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var loan in currentLoans)
+                            {
+                                var dueDate = loan.IssueDate.AddDays(loan.DurationNumber);
+                                var daysLeft = (dueDate - DateTime.Now).Days;
+                                var isOverdue = daysLeft < 0;
+                                var canRenew = !isOverdue && loan.RenewalsUsed < 2;
+                                <tr class="@(isOverdue ? "table-danger" : "")">
+                                    <td class="ps-4 fw-bold">@loan.ItemCopy?.ItemInfo?.Title</td>
+                                    <td><code>@loan.ItemCopy?.Barcode</code></td>
+                                    <td>@loan.IssueDate.ToString("dd MMM yyyy")</td>
+                                    <td class="@(isOverdue ? "text-danger fw-bold" : "")">@dueDate.ToString("dd MMM yyyy")</td>
+                                    <td>
+                                        @if (isOverdue)
+                                        {
+                                            <span class="badge bg-danger px-3">OVERDUE</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-success px-3">Active</span>
+                                        }
+                                    </td>
+                                    <td class="pe-4">
+                                        @if (canRenew)
+                                        {
+                                            <button class="btn btn-sm btn-outline-warning action-btn" onclick="renewBook(@loan.Id)">Renew</button>
+                                        }
+                                        else if (!isOverdue)
+                                        {
+                                            <span class="text-muted small">Max renewals reached</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-book fa-4x text-muted mb-3 opacity-25"></i>
+                    <h5 class="text-muted">No active loans</h5>
+                    <p class="text-muted small">Visit library to borrow books!</p>
+                    <a href="/BorrowRequest/Create" class="btn btn-primary">Request a Book</a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Fines Section -->
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4 h-100 overflow-hidden">
+                <div class="card-header bg-danger text-white py-3">
+                    <h5 class="mb-0 fw-bold"><i class="fas fa-rupee-sign me-2"></i>My Fines</h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (fines.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4">Fine Type</th>
+                                        <th>Amount (Rs.)</th>
+                                        <th class="pe-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var fine in fines)
+                                    {
+                                        <tr>
+                                            <td class="ps-4">Overdue Fine</td>
+                                            <td class="text-danger fw-bold">₨ @fine.FineAccrued.ToString("N2")</td>
+                                            <td class="pe-4">
+                                                <button class="btn btn-sm btn-warning action-btn" onclick="payFine(@fine.Id, @fine.FineAccrued)">Pay Now</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot class="table-light">
+                                    <tr class="fw-bold">
+                                        <td class="ps-4">Total</td>
+                                        <td class="text-danger">₨ @totalFine.ToString("N2")</td>
+                                        <td class="pe-4"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-check-circle fa-4x text-success mb-3 opacity-50"></i>
+                            <h5 class="text-success">No Outstanding Fines!</h5>
+                            <p class="text-muted small">You have a clean record 👍</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Reservations Section -->
+        <div class="col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4 h-100 overflow-hidden">
+                <div class="card-header bg-info text-white py-3">
+                    <h5 class="mb-0 fw-bold"><i class="fas fa-bookmark me-2"></i>My Reservations</h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (reservations.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="ps-4">Book Title</th>
+                                        <th>Expiry Date</th>
+                                        <th>Status</th>
+                                        <th class="pe-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var res in reservations)
+                                    {
+                                        <tr>
+                                            <td class="ps-4 fw-bold">@res.ItemInfo?.Title</td>
+                                            <td>@res.ExpiryDate.ToString("dd MMM yyyy")</td>
+                                            <td>
+                                                @if (res.IsAvailable)
+                                                {
+                                                    <span class="badge bg-success px-3">Available for Pickup</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-warning text-dark px-3">Waiting</span>
+                                                }
+                                            </td>
+                                            <td class="pe-4">
+                                                <button class="btn btn-sm btn-outline-danger action-btn" onclick="cancelReservation(@res.Id)">Cancel</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-bookmark fa-4x text-muted mb-3 opacity-25"></i>
+                            <h5 class="text-muted">No active reservations</h5>
+                            <p class="text-muted small">Search for books to reserve</p>
+                            <a href="/ItemInfo/Index" class="btn btn-primary">Search Books</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book Catalog Section -->
+    <div class="card shadow-lg mt-4 mb-4 border-0 rounded-4 overflow-hidden">
+        <div class="card-header bg-success text-white py-3">
+            <h5 class="mb-0 fw-bold"><i class="fas fa-book me-2"></i>Browse & Request Books</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-4">
+                <a href="/StudentCatalog/Books" class="btn btn-primary btn-lg px-5">
+                    <i class="fas fa-book-open me-2"></i>Browse All Books
+                </a>
+                <a href="/BorrowRequest/Create" class="btn btn-warning btn-lg px-5 ms-3">
+                    <i class="fas fa-hand-holding-heart me-2"></i>Request to Borrow
+                </a>
+            </div>
+
+            <div id="bookSearchResults">
+                @if (recommendedBooks.Any())
+                {
+                    <h6 class="mb-3">Recommended for you:</h6>
+                    <div class="row g-4">
+                        @foreach (var book in recommendedBooks.Take(4))
+                        {
+                            <div class="col-md-3 col-sm-6">
+                                <div class="book-card text-center p-3 border bg-light h-100">
+                                    <i class="fas fa-book fa-3x text-primary mb-3"></i>
+                                    <h6 class="fw-bold mb-1">@book.Title</h6>
+                                    <small class="text-muted d-block">@book.ISBN</small>
+                                    <hr class="my-2">
+                                    <button class="btn btn-sm btn-outline-primary" onclick="viewBookDetails(@book.Id)">View Details</button>
+                                    <button class="btn btn-sm btn-outline-success mt-1" onclick="reserveBook(@book.Id)">Reserve</button>
+                                    <a href="/BorrowRequest/Create" class="btn btn-sm btn-outline-warning mt-1 d-block">Request to Borrow</a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="renewModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning">
+                <h5 class="modal-title">Renew Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to renew this book?</p>
+                <p class="text-muted">New due date will be extended by 14 days.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-warning" id="confirmRenewBtn">Confirm Renew</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="payFineModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Pay Fine</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Fine Amount: <strong id="fineAmount" class="text-danger"></strong></p>
+                <p>Select Payment Method:</p>
+                <select id="paymentMethod" class="form-control">
+                    <option value="Cash">Cash (Library Counter)</option>
+                    <option value="Card">Credit/Debit Card</option>
+                    <option value="JazzCash">JazzCash</option>
+                    <option value="EasyPaisa">EasyPaisa</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmPayBtn">Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentLoanId = 0;
+    let currentFineId = 0;
+    let currentFineAmount = 0;
+
+    function renewBook(loanId) {
+        currentLoanId = loanId;
+        new bootstrap.Modal(document.getElementById('renewModal')).show();
+    }
+
+    document.getElementById('confirmRenewBtn').addEventListener('click', function() {
+        fetch(`/Issuance/Renew/${currentLoanId}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) { location.reload(); }
+                else { alert(data.message || 'Renewal failed'); }
+            });
+    });
+
+    function payFine(fineId, amount) {
+        currentFineId = fineId;
+        currentFineAmount = amount;
+        document.getElementById('fineAmount').innerText = 'Rs. ' + amount.toFixed(2);
+        new bootstrap.Modal(document.getElementById('payFineModal')).show();
+    }
+
+    document.getElementById('confirmPayBtn').addEventListener('click', function() {
+        const paymentMethod = document.getElementById('paymentMethod').value;
+        fetch(`/FineTransaction/Pay`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fineId: currentFineId, amount: currentFineAmount, method: paymentMethod })
+        }).then(response => response.json())
+          .then(data => {
+              if (data.success) { alert('Payment successful!'); location.reload(); }
+              else { alert('Payment failed'); }
+          });
+    });
+
+    function reserveBook(bookId) {
+        fetch(`/ReserveItem/Create?bookId=${bookId}`, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) { alert('Book reserved successfully!'); location.reload(); }
+                else { alert(data.message || 'Reservation failed'); }
+            });
+    }
+
+    function borrowRequest(bookId) {
+        window.location.href = `/BorrowRequest/Create?bookId=${bookId}`;
+    }
+
+    function cancelReservation(reservationId) {
+        if (confirm('Are you sure you want to cancel this reservation?')) {
+            fetch(`/ReserveItem/Delete/${reservationId}`, { method: 'POST' })
+                .then(() => location.reload());
+        }
+    }
+
+    function viewBookDetails(bookId) {
+        window.location.href = `/ItemInfo/Details/${bookId}`;
+    }
+
+    function searchBooks() {
+        const searchTerm = document.getElementById('bookSearchInput').value;
+        if (searchTerm.length < 2) { alert('Please enter at least 2 characters'); return; }
+        window.location.href = `/ItemInfo/Search?searchTerm=${encodeURIComponent(searchTerm)}`;
+    }
+</script>

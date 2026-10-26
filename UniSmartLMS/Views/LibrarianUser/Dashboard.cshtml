@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Librarian Dashboard - User Management";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-info text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-user-cog me-3"></i>Librarian - User Management</h2>
+                <p class="mb-0 opacity-75">Manage library users (Students, Faculty, Staff, Visitors)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white shadow">
+                <div class="card-body text-center">
+                    <h2 class="display-4">@ViewBag.TotalStudents</h2>
+                    <p class="mb-0">Students</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white shadow">
+                <div class="card-body text-center">
+                    <h2 class="display-4">@ViewBag.TotalFaculty</h2>
+                    <p class="mb-0">Faculty</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-secondary text-white shadow">
+                <div class="card-body text-center">
+                    <h2 class="display-4">@ViewBag.TotalStaff</h2>
+                    <p class="mb-0">Staff</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white shadow">
+                <div class="card-body text-center">
+                    <h2 class="display-4">@ViewBag.TotalVisitors</h2>
+                    <p class="mb-0">Visitors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <a asp-action="UserManagement" class="btn btn-primary me-2">
+                        <i class="fas fa-users me-2"></i>Manage Users
+                    </a>
+                    <a asp-action="CreateUser" class="btn btn-success">
+                        <i class="fas fa-user-plus me-2"></i>Create New User
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

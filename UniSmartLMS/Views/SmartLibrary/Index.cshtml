@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Smart Library AI";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/smart-library.css" />
+
+<div class="deepseek-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>UniSmart<span class="highlight">AI</span></span>
+            </div>
+            <!-- was resetChat() -->
+            <button class="new-chat-btn" onclick="newChat()">
+                <i class="fas fa-plus"></i> New Chat
+            </button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-section">
+                <div class="section-title">Today</div>
+                <div id="chatHistoryList" class="chat-history">
+                    <div class="history-item active" onclick="resetChat()">
+                        <i class="fas fa-comment-dots"></i>
+                        <span>New Conversation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>@User.Identity?.Name?.Split('@')[0] ?? "Guest"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Chat Area -->
+    <div class="main-chat">
+        <div class="chat-header">
+            <h2><i class="fas fa-robot"></i> Smart Library AI</h2>
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span>AI Ready</span>
+            </div>
+        </div>
+
+        <div class="messages-container" id="messagesContainer">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h1>Hello, I'm UniSmart AI</h1>
+                <p>Your intelligent research assistant. Ask me anything about your uploaded documents.</p>
+                <div class="feature-grid">
+                    <div class="feature-card"><i class="fas fa-file-pdf"></i><span>Upload PDF, DOCX, PPTX</span></div>
+                    <div class="feature-card"><i class="fas fa-question-circle"></i><span>Ask any question</span></div>
+                    <div class="feature-card"><i class="fas fa-citation"></i><span>Get cited answers</span></div>
+                </div>
+                <div class="suggestions">
+                    <div class="suggestion-title">Try asking:</div>
+                    <div class="suggestion-chips">
+                        <button class="chip" onclick="sendQuickQuestion('What is Python?')">🐍 What is Python?</button>
+                        <button class="chip" onclick="sendQuickQuestion('Explain machine learning')">🤖 Explain ML</button>
+                        <button class="chip" onclick="sendQuickQuestion('Summarize this document')">📝 Summarize</button>
+                        <button class="chip" onclick="sendQuickQuestion('List key findings')">📋 Key findings</button>
+                    </div>
+                </div>
+            </div>
+            <div id="chatMessages" class="chat-messages" style="display: none;"></div>
+        </div>
+
+        <div class="input-area">
+            <div class="input-wrapper">
+                <textarea id="questionInput" placeholder="Ask anything..." rows="1"></textarea>
+                <button id="sendBtn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="input-footer">
+                <span><i class="fas fa-microchip"></i> AI Powered by DeepThink™</span>
+                <span><i class="fas fa-lock"></i> Answers from your documents only</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>AI is thinking...</p>
+    </div>
+</div>
+
+<script src="~/js/smart-library.js"></script>

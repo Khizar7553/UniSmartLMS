@@ -1,0 +1,60 @@
+﻿@model UniSmartLMS.Models.SectionC_Catalog.ItemCopy
+
+@{
+    ViewData["Title"] = "Book Copy Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>Book Copy Details</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Book Title</dt>
+                                <dd>@Model.ItemInfo?.Title</dd>
+
+                                <dt>Barcode</dt>
+                                <dd><span class="badge bg-secondary">@Model.Barcode</span></dd>
+
+                                <dt>Accession Number</dt>
+                                <dd>@Model.AccessionNumber</dd>
+
+                                <dt>Unit Cost</dt>
+                                <dd>Rs. @Model.UnitCost?.ToString("N2")</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Branch</dt>
+                                <dd>@Model.LibraryBranch?.Description</dd>
+
+                                <dt>Rack (Almari)</dt>
+                                <dd>@Model.LibraryRack?.Code</dd>
+
+                                <dt>Shelf (Dabba)</dt>
+                                <dd>@Model.LibraryShelf?.Code</dd>
+
+                                <dt>Condition</dt>
+                                <dd>@Model.ConditionRemarks</dd>
+
+                                <dt>Last Checked</dt>
+                                <dd>@Model.ConditionLastChecked?.ToString("dd MMM yyyy")</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Edit</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

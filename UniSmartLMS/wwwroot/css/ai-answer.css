@@ -1,0 +1,836 @@
+﻿/* ========================================
+   AI ANSWER STYLES - DeepSeek Style
+   ======================================== 
+
+ Main Container 
+.ai-answer-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 20px 0;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,193,7,0.15);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ Header 
+.ai-answer-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255,193,7,0.3);
+    margin-bottom: 25px;
+}
+
+.ai-answer-icon {
+    font-size: 32px;
+    background: rgba(255,193,7,0.15);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(255,193,7,0.2);
+}
+
+.ai-answer-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffc107;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+ Content 
+.ai-answer-content {
+    color: #e0e0e0;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+ Definition Block 
+.definition-block {
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 22px;
+    margin: 15px 0;
+    border-left: 4px solid #28a745;
+}
+
+.definition-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+.additional-info {
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+    .additional-info strong {
+        color: #ffc107;
+    }
+
+    .additional-info ul {
+        margin: 10px 0 0 20px;
+    }
+
+    .additional-info li {
+        margin: 8px 0;
+    }
+
+ Procedural Block 
+.procedural-block {
+    background: rgba(255,193,7,0.05);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.step-list, .instruction-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+    .step-list li, .instruction-list li {
+        padding: 12px 0 12px 40px;
+        position: relative;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+        .step-list li:last-child, .instruction-list li:last-child {
+            border-bottom: none;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            background: #ffc107;
+            color: #1a1a2e;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 12px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+.step-list {
+    counter-reset: step-counter;
+}
+
+ Comparison Table 
+.comparison-block {
+    overflow-x: auto;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .comparison-table th {
+        background: #ffc107;
+        color: #1a1a2e;
+        padding: 14px 16px;
+        text-align: left;
+        font-weight: 700;
+    }
+
+    .comparison-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+ List Block 
+.list-block {
+    background: rgba(40,167,69,0.05);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.key-points-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+    .key-points-list li {
+        padding: 10px 0 10px 32px;
+        position: relative;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+        .key-points-list li:last-child {
+            border-bottom: none;
+        }
+
+        .key-points-list li i {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            color: #28a745;
+        }
+
+ General Answer 
+.general-answer .main-answer {
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.additional-points {
+    background: rgba(23,162,184,0.08);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-top: 15px;
+}
+
+    .additional-points strong {
+        color: #17a2b8;
+    }
+
+    .additional-points ul {
+        margin: 10px 0 0 20px;
+    }
+
+ Highlight Keywords 
+.highlight {
+    background: rgba(255,193,7,0.25);
+    color: #ffc107;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+ Sources Section 
+.sources-section {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.sources-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffc107;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sources-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.source-item {
+    background: rgba(255,255,255,0.06);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+    .source-item:hover {
+        background: rgba(255,193,7,0.15);
+        transform: translateY(-2px);
+    }
+
+.source-name {
+    font-weight: 600;
+    color: #ffc107;
+}
+
+.source-confidence {
+    color: #aaa;
+    font-size: 10px;
+}
+
+ Footer 
+.ai-answer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 12px;
+}
+
+.confidence-badge {
+    padding: 5px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.confidence-high {
+    background: rgba(40,167,69,0.15);
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.confidence-medium {
+    background: rgba(255,193,7,0.15);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+
+.confidence-low {
+    background: rgba(220,53,69,0.15);
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.source-count {
+    color: #888;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+ Mobile Responsive 
+@media (max-width: 768px) {
+    .ai-answer-container {
+        padding: 18px;
+    }
+
+    .ai-answer-title {
+        font-size: 18px;
+    }
+
+    .ai-answer-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .definition-text {
+        font-size: 15px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .sources-list {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .ai-answer-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+ Scrollbar 
+.ai-answer-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-answer-content::-webkit-scrollbar-track {
+    background: #1a1a2e;
+    border-radius: 10px;
+}
+
+.ai-answer-content::-webkit-scrollbar-thumb {
+    background: #ffc107;
+    border-radius: 10px;
+}
+ ========================================
+   DEEPTHINK ENGINE STYLES - Like DeepSeek
+   ======================================== 
+
+.deep-think-card {
+    background: linear-gradient(135deg, #0a0e27 0%, #0f1235 100%);
+    border-radius: 20px;
+    margin: 16px 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,193,7,0.2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.think-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 24px;
+    background: rgba(255,193,7,0.08);
+    border-bottom: 1px solid rgba(255,193,7,0.15);
+}
+
+.think-icon {
+    font-size: 28px;
+}
+
+.think-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffc107;
+    letter-spacing: 1px;
+}
+
+.think-badge {
+    margin-left: auto;
+    background: rgba(255,193,7,0.15);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #ffc107;
+}
+
+.think-content {
+    padding: 24px;
+}
+
+ Definition Box 
+.definition-box {
+    background: rgba(40,167,69,0.08);
+    border-radius: 16px;
+    padding: 20px;
+    border-left: 4px solid #28a745;
+}
+
+.definition-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #e0e0e0;
+}
+
+.topic-highlight {
+    color: #28a745;
+    font-weight: 700;
+    background: rgba(40,167,69,0.15);
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.deep-dive {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+    .deep-dive strong {
+        color: #ffc107;
+    }
+
+    .deep-dive ul {
+        margin: 10px 0 0 20px;
+    }
+
+    .deep-dive li {
+        margin: 8px 0;
+    }
+
+ Guide Box - Steps 
+.guide-box {
+    background: rgba(23,162,184,0.08);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.deep-steps {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: step-counter;
+}
+
+    .deep-steps li {
+        padding: 12px 0 12px 45px;
+        position: relative;
+        counter-increment: step-counter;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+        .deep-steps li::before {
+            content: counter(step-counter);
+            background: linear-gradient(135deg, #17a2b8, #0f6b7a);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .deep-steps li:last-child {
+            border-bottom: none;
+        }
+
+ Comparison Table 
+.comparison-box {
+    overflow-x: auto;
+}
+
+.deep-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .deep-table th {
+        background: #ffc107;
+        color: #0a0e27;
+        padding: 14px 16px;
+        font-weight: 700;
+    }
+
+    .deep-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .deep-table .aspect {
+        width: 100px;
+        font-weight: 600;
+        color: #ffc107;
+    }
+
+ List Box 
+.list-box {
+    background: rgba(102,126,234,0.08);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.deep-keypoints {
+    list-style: none;
+    padding-left: 0;
+}
+
+    .deep-keypoints li {
+        padding: 10px 0 10px 35px;
+        position: relative;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+        .deep-keypoints li:last-child {
+            border-bottom: none;
+        }
+
+.key-marker {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+ Summary Box 
+.summary-box {
+    background: rgba(255,193,7,0.05);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.summary-text p {
+    margin: 12px 0;
+    padding-left: 20px;
+    border-left: 2px solid #ffc107;
+}
+
+ Evaluation Box (Pros/Cons) 
+.evaluation-box {
+    background: rgba(220,53,69,0.05);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.pros-cons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pros, .cons {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+    .pros strong {
+        color: #28a745;
+    }
+
+    .cons strong {
+        color: #dc3545;
+    }
+
+    .pros ul, .cons ul {
+        margin: 12px 0 0 20px;
+    }
+
+    .pros li, .cons li {
+        margin: 8px 0;
+    }
+
+ Explanation Box 
+.explanation-box {
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.explanation-text {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.concept-highlight {
+    background: rgba(255,193,7,0.25);
+    color: #ffc107;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.insights {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+    .insights strong {
+        color: #17a2b8;
+    }
+
+    .insights ul {
+        margin: 10px 0 0 20px;
+    }
+
+    .insights li {
+        margin: 8px 0;
+    }
+
+ Sources Section 
+.deep-sources {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.sources-head {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffc107;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sources-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.source-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 12px;
+    padding: 12px 16px;
+    min-width: 180px;
+    flex: 1;
+}
+
+    .source-card.high {
+        border-left: 3px solid #28a745;
+    }
+
+    .source-card.medium {
+        border-left: 3px solid #ffc107;
+    }
+
+    .source-card.low {
+        border-left: 3px solid #dc3545;
+    }
+
+.source-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #e0e0e0;
+    margin-bottom: 6px;
+}
+
+.source-confidence {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.source-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+    .source-bar .fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.3s;
+    }
+
+.source-card.high .fill {
+    background: #28a745;
+}
+
+.source-card.medium .fill {
+    background: #ffc107;
+}
+
+.source-card.low .fill {
+    background: #dc3545;
+}
+
+ Footer 
+.deep-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.confidence-high {
+    color: #28a745;
+}
+
+.confidence-medium {
+    color: #ffc107;
+}
+
+.confidence-low {
+    color: #dc3545;
+}
+
+ Warning Box (No results) 
+.warning-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.action-box, .suggestions, .examples {
+    text-align: left;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+    .action-box strong, .suggestions strong, .examples strong {
+        color: #ffc107;
+    }
+
+    .action-box ul, .suggestions ul, .examples ul {
+        margin: 12px 0 0 20px;
+    }
+
+    .action-box li, .suggestions li, .examples li {
+        margin: 6px 0;
+    }
+
+ Responsive 
+@media (max-width: 768px) {
+    .think-header {
+        padding: 12px 16px;
+    }
+
+    .think-title {
+        font-size: 16px;
+    }
+
+    .think-content {
+        padding: 16px;
+    }
+
+    .pros-cons {
+        flex-direction: column;
+    }
+
+    .deep-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        justify-content: center;
+    }
+
+    .deep-steps li {
+        padding-left: 35px;
+    }
+
+        .deep-steps li::before {
+            width: 26px;
+            height: 26px;
+            font-size: 12px;
+        }
+}*/

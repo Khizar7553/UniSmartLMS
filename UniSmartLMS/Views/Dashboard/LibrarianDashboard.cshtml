@@ -1,0 +1,121 @@
+﻿@model UniSmartLMS.ViewModels.LibrarianDashboardViewModel
+@{
+    ViewData["Title"] = "Librarian Dashboard";
+}
+
+<style>
+    .stat-square {
+        transition: transform 0.2s;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+        .stat-square:hover {
+            transform: translateY(-3px);
+        }
+
+    .quick-btn {
+        transition: all 0.2s;
+        border-radius: 10px;
+    }
+
+        .quick-btn:hover {
+            transform: translateX(5px);
+            background: #f8f9fa;
+        }
+</style>
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-success text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-chalkboard-user me-3"></i>Librarian Dashboard</h2>
+                <p class="mb-0 opacity-75"><i class="fas fa-calendar-alt me-2"></i>Today's Operations: @DateTime.Now.ToString("dddd, dd MMMM yyyy")</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card stat-square bg-primary text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.TodaysIssuances</h2>
+                <p class="mb-0">Today's Issues</p>
+                <small>Books issued today</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-square bg-danger text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.OverdueLoans</h2>
+                <p class="mb-0">Overdue Books</p>
+                <small>Need follow-up</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-square bg-warning text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.PendingFinesCount</h2>
+                <p class="mb-0">Pending Fines</p>
+                <small>Awaiting payment</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-square bg-info text-white shadow p-3">
+                <h2 class="display-4 fw-bold">₨ @Model.PendingFinesAmount.ToString("N0")</h2>
+                <p class="mb-0">Fine Amount</p>
+                <small>Total outstanding</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-12">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3"><a href="@Url.Action("Create", "Issuance")" class="btn btn-outline-primary quick-btn w-100 py-3"><i class="fas fa-hand-holding-heart me-2 fa-lg"></i>Issue Book</a></div>
+                        <div class="col-md-3"><a href="@Url.Action("Create", "ReturnItem")" class="btn btn-outline-success quick-btn w-100 py-3"><i class="fas fa-undo-alt me-2 fa-lg"></i>Return Book</a></div>
+                        <div class="col-md-3"><a href="@Url.Action("Create", "UserFine")" class="btn btn-outline-warning quick-btn w-100 py-3"><i class="fas fa-rupee-sign me-2 fa-lg"></i>Add Fine</a></div>
+                        <div class="col-md-3"><a href="@Url.Action("Create", "LibraryMember")" class="btn btn-outline-info quick-btn w-100 py-3"><i class="fas fa-user-plus me-2 fa-lg"></i>Register Member</a></div>
+                    </div>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-3"><a href="/ItemInfo/Index" class="btn btn-outline-dark quick-btn w-100 py-3"><i class="fas fa-book-open me-2 fa-lg"></i>Browse All Books</a></div>
+                        <div class="col-md-3"><a href="/SmartLibrary/Index" class="btn btn-outline-success quick-btn w-100 py-3"><i class="fas fa-brain me-2 fa-lg"></i>AI Smart Library</a></div>
+                        <div class="col-md-3"><a href="/Research/Index" class="btn btn-outline-danger quick-btn w-100 py-3"><i class="fas fa-file-alt me-2 fa-lg"></i>Research Papers</a></div>
+                        <div class="col-md-3"><a href="/BorrowRequest/Index" class="btn btn-outline-warning quick-btn w-100 py-3"><i class="fas fa-clipboard-list me-2 fa-lg"></i>Borrow Requests</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-clock me-2"></i>Today's Activity</h5>
+                </div>
+                <div class="card-body">
+                    <h4>@Model.TodaysIssuances books issued today</h4>
+                    <p class="text-muted">@Model.ActiveMembers active members in system</p>
+                    <hr />
+                    <a href="#" class="btn btn-sm btn-outline-secondary">View Full Report →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Overdue & Fines</h5>
+                </div>
+                <div class="card-body">
+                    <h4 class="text-danger">@Model.OverdueLoans overdue books</h4>
+                    <p class="text-muted">₨ @Model.PendingFinesAmount.ToString("N2") in pending fines</p>
+                    <hr />
+                    <a href="#" class="btn btn-sm btn-outline-danger">Send Reminders →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

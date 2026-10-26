@@ -1,0 +1,44 @@
+﻿@model UniSmartLMS.Models.SectionA_University.Building
+
+@{
+    ViewData["Title"] = "Building Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>Building Details</h3>
+                </div>
+                <div class="card-body p-4">
+                    <table class="table table-borderless">
+                        <tr><th style="width: 150px;">Name</th><td>@Model.Name</td></tr>
+                        <tr><th>Code</th><td><span class="badge bg-secondary">@Model.Code</span></td></tr>
+                        <tr><th>Block</th><td>@Model.Block?.Name</td></tr>
+                        <tr><th>Description</th><td>@Model.Description</td></tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                @if (Model.IsActive)
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Inactive</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr><th>Created At</th><td>@Model.CreatedAt.ToString("dd MMM yyyy, hh:mm tt")</td></tr>
+                    </table>
+                    <hr />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Edit</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

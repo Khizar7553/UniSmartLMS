@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Register";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white text-center rounded-4 rounded-bottom-0 py-3">
+                    <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Create Account</h3>
+                    <p class="mb-0 small opacity-75">Join UniSmartLMS today</p>
+                </div>
+                <div class="card-body p-4">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <i class="fas fa-check-circle me-2"></i> @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <form method="post" asp-action="Register" asp-route-returnUrl="@returnUrl">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <!-- Full Name -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-user me-2"></i>Full Name</label>
+                            <input type="text" name="fullName" class="form-control" placeholder="e.g., Muhammad Ahmad" required />
+                            <small class="text-muted">Enter your complete name as per CNIC</small>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-envelope me-2"></i>Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="example@university.edu.pk" required />
+                            <small class="text-muted">Use your university email address</small>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-phone me-2"></i>Contact Number</label>
+                            <input type="tel" name="contact" class="form-control" placeholder="+92 300 1234567" required />
+                            <small class="text-muted">Include country code</small>
+                        </div>
+
+@*                         <!-- ✅ FIXED: Preferred Language (No @asp-for, use name attribute) -->
+ *@                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-language me-2"></i>Preferred Language / پسندیدہ زبان</label>
+                            <select name="preferredLanguage" class="form-control">
+                                <option value="English">🇬🇧 English</option>
+                                <option value="Urdu">🇵🇰 اردو</option>
+                                <option value="RomanUrdu">🇵🇰 Roman Urdu</option>
+                            </select>
+                            <small class="text-muted">Choose your preferred language for AI Assistant</small>
+                        </div>
+
+                        <!-- User Type -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-user-graduate me-2"></i>User Type</label>
+                            <select name="userType" class="form-control" id="userType" required>
+                                <option value="">-- Select User Type --</option>
+                                <option value="Student">Student</option>
+                                <option value="Faculty">Faculty Member</option>
+                            </select>
+                            <small class="text-muted">Select your role in the university</small>
+                        </div>
+
+                        <!-- Registration Number (Shows only for Student) -->
+                        <div class="mb-3" id="registrationDiv" style="display: none;">
+                            <label class="form-label fw-bold"><i class="fas fa-id-card me-2"></i>Registration Number</label>
+                            <input type="text" name="registrationNumber" class="form-control" placeholder="e.g., 2024-CS-101" />
+                            <small class="text-muted">Your university roll number</small>
+                        </div>
+
+                        <!-- Department -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-building me-2"></i>Department</label>
+                            <select name="departmentId" class="form-control" asp-items="ViewBag.DepartmentList" required>
+                                <option value="">-- Select Department --</option>
+                            </select>
+                            <small class="text-muted">Your academic department</small>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-lock me-2"></i>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Minimum 4 characters" required />
+                            <small class="text-muted">Use a strong password</small>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold"><i class="fas fa-lock me-2"></i>Confirm Password</label>
+                            <input type="password" name="confirmPassword" class="form-control" placeholder="Re-enter your password" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 py-2 mt-2">
+                            <i class="fas fa-user-check me-2"></i>Register
+                        </button>
+                    </form>
+
+                    <hr class="my-4" />
+                    <p class="text-center mb-0">
+                        Already have an account? <a asp-action="Login" asp-route-returnUrl="@returnUrl" class="text-success fw-bold">Login here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show/hide registration number field based on user type
+    document.getElementById('userType').addEventListener('change', function() {
+        var regDiv = document.getElementById('registrationDiv');
+        var regInput = document.querySelector('input[name="registrationNumber"]');
+        if (this.value === 'Student') {
+            regDiv.style.display = 'block';
+            regInput.required = true;
+        } else {
+            regDiv.style.display = 'none';
+            regInput.required = false;
+        }
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

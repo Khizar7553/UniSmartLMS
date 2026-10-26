@@ -1,0 +1,341 @@
+WHAT IS ARTIFICIAL INTELLIGENCE?
+Artificial Intelligence (AI) is the simulation of human intelligence in machines that are programmed to think and learn. AI systems can perform tasks such as visual perception, speech recognition, decision-making, and language translation. Examples include ChatGPT, self-driving cars, and facial recognition.
+
+WHAT IS MACHINE LEARNING?
+Machine Learning is a subset of AI that enables systems to learn and improve from experience without being explicitly programmed. It uses algorithms to find patterns in data. Types include supervised learning, unsupervised learning, and reinforcement learning.
+
+WHAT IS DEEP LEARNING?
+Deep Learning is a subset of machine learning inspired by the structure of the human brain. It uses artificial neural networks with multiple layers to process information. Applications include image recognition, natural language processing, and voice assistants.
+
+WHAT IS PYTHON PROGRAMMING LANGUAGE?
+Python is a high-level, interpreted programming language known for its simplicity and readability. It is widely used for web development, data science, artificial intelligence, and automation. Python was created by Guido van Rossum and released in 1991.
+
+WHAT IS DATA SCIENCE?
+Data Science is the field of extracting insights and knowledge from data using scientific methods, algorithms, and systems. It combines statistics, computer science, and domain expertise. Data scientists clean, analyze, and visualize data to solve business problems.
+
+WHAT IS CLOUD COMPUTING?
+Cloud computing is the delivery of computing services including servers, storage, databases, networking, and software over the internet. Major providers include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform. Benefits include cost savings, scalability, and accessibility.
+
+WHAT IS BLOCKCHAIN?
+Blockchain is a distributed ledger technology that records transactions across many computers securely. It is the underlying technology behind cryptocurrencies like Bitcoin and Ethereum. Key features include decentralization, transparency, and immutability.
+
+WHAT IS CYBERSECURITY?
+Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. It involves preventing unauthorized access, data breaches, and cyber threats. Key areas include network security, application security, and information security.
+
+WHAT IS THE INTERNET OF THINGS?
+Internet of Things (IoT) refers to the network of physical devices embedded with sensors and software to connect and exchange data over the internet. Examples include smart home devices, wearable fitness trackers, and industrial sensors.
+
+WHAT IS DEVOPS?
+DevOps is a set of practices that combines software development and IT operations. It aims to shorten development cycles, increase deployment frequency, and deliver features faster. Key practices include continuous integration, continuous delivery, and infrastructure as code.
+
+WHAT IS SQL?
+SQL (Structured Query Language) is a programming language used to manage and manipulate relational databases. It is used to query, insert, update, and delete data. Common commands include SELECT, INSERT, UPDATE, DELETE, and JOIN.
+
+WHAT IS JAVA?
+Java is a object-oriented programming language designed to have few implementation dependencies. It is known for "write once, run anywhere" capability. Java is widely used for Android apps, enterprise software, and web applications.
+
+WHAT IS JAVASCRIPT?
+JavaScript is a programming language that enables interactive web pages. It is an essential part of web development along with HTML and CSS. JavaScript runs in web browsers and is used for dynamic content, animations, and web applications.
+
+WHAT IS HTML?
+HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of web pages using elements and tags. HTML works with CSS for styling and JavaScript for interactivity.
+
+WHAT IS CSS?
+CSS (Cascading Style Sheets) is a style sheet language used to describe the presentation of HTML documents. It controls layout, colors, fonts, and responsive design. CSS enables separation of content from visual presentation.
+
+WHAT IS REACT?
+React is a JavaScript library for building user interfaces developed by Facebook. It uses a component-based architecture and virtual DOM for efficient rendering. React is widely used for single-page applications and mobile apps.
+
+WHAT IS NODE.JS?
+Node.js is a JavaScript runtime built on Chrome's V8 engine that allows running JavaScript on the server. It is event-driven and non-blocking, making it efficient for real-time applications. Node.js is used for building scalable network applications.
+
+WHAT IS DOCKER?
+Docker is a platform for developing, shipping, and running applications in containers. Containers package software with its dependencies to run consistently across environments. Docker is widely used for microservices and CI/CD pipelines.
+
+WHAT IS KUBERNETES?
+Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications. It was originally developed by Google. Kubernetes manages clusters of containers across multiple hosts.
+
+WHAT IS GIT?
+Git is a distributed version control system for tracking changes in source code. It allows multiple developers to work on the same project simultaneously. Git is essential for collaboration and code management.
+
+WHAT IS AGILE METHODOLOGY?
+Agile is an iterative approach to software development focused on customer satisfaction, collaboration, and adaptability. It emphasizes delivering working software frequently. Popular frameworks include Scrum, Kanban, and Extreme Programming.
+
+WHAT IS SCRUM?
+Scrum is an Agile framework for managing complex projects. It uses roles like Product Owner, Scrum Master, and Development Team. Key events include Sprint Planning, Daily Standup, Sprint Review, and Sprint Retrospective.
+
+WHAT IS THE DIFFERENCE BETWEEN AI AND MACHINE LEARNING?
+AI is the broad field of creating intelligent machines, while Machine Learning is a subset of AI that enables systems to learn from data. All machine learning is AI, but not all AI is machine learning. Deep Learning is a subset of machine learning.
+
+WHAT IS THE DIFFERENCE BETWEEN SQL AND NoSQL?
+SQL databases are relational, use structured schemas, and support JOIN operations. NoSQL databases are non-relational, handle unstructured data, and are horizontally scalable. SQL is better for complex queries; NoSQL for large-scale data.
+
+WHAT IS THE DIFFERENCE BETWEEN FRONTEND AND BACKEND?
+Frontend is the client-side of applications that users see and interact with (HTML, CSS, JavaScript). Backend is the server-side that handles logic, databases, and APIs (Python, Java, Node.js). Full-stack developers work on both.
+
+WHAT IS THE DIFFERENCE BETWEEN HTTP AND HTTPS?
+HTTP transfers data in plain text, while HTTPS encrypts data using SSL/TLS. HTTPS is secure and recommended for sensitive information like passwords and payments. HTTPS uses port 443; HTTP uses port 80.
+
+WHAT IS THE DIFFERENCE BETWEEN CPU AND GPU?
+CPU (Central Processing Unit) handles general-purpose tasks with few powerful cores. GPU (Graphics Processing Unit) handles parallel processing with thousands of smaller cores. GPUs are ideal for graphics, gaming, and machine learning.
+
+WHAT IS THE DIFFERENCE BETWEEN RAM AND ROM?
+RAM (Random Access Memory) is volatile temporary memory for active processes. ROM (Read-Only Memory) is non-volatile permanent storage for firmware. RAM contents are lost when power is off; ROM retains data.
+
+WHAT IS THE DIFFERENCE BETWEEN BITCOIN AND BLOCKCHAIN?
+Blockchain is the underlying distributed ledger technology. Bitcoin is a cryptocurrency that runs on blockchain. Many other cryptocurrencies like Ethereum also use blockchain technology for different purposes.
+
+WHAT IS THE DIFFERENCE BETWEEN SYMMETRIC AND ASYMMETRIC ENCRYPTION?
+Symmetric uses one key for both encryption and decryption (faster, less secure). Asymmetric uses public and private key pairs (slower, more secure). Asymmetric is used for SSL/TLS and digital signatures.
+
+WHAT IS THE DIFFERENCE BETWEEN TCP AND UDP?
+TCP is connection-oriented, reliable, and ensures ordered packet delivery (slower). UDP is connectionless, faster, but packets may be lost. TCP is used for web browsing; UDP for streaming and gaming.
+
+WHAT IS THE DIFFERENCE BETWEEN VIRTUALIZATION AND CONTAINERIZATION?
+Virtualization creates full virtual machines with guest OS (heavier). Containerization shares host OS kernel (lighter, faster). Containers are more portable and efficient for microservices.
+
+WHAT IS THE DIFFERENCE BETWEEN AI, ML, and DL?
+AI is the broadest concept of intelligent machines. ML is a subset of AI where systems learn from data. DL is a subset of ML using neural networks with many layers. DL is more powerful but requires more data.
+
+WHAT IS THE DIFFERENCE BETWEEN SUPERVISED AND UNSUPERVISED LEARNING?
+Supervised learning uses labeled data to train models (classification, regression). Unsupervised learning finds patterns in unlabeled data (clustering, association). Supervised needs human labels; unsupervised discovers naturally.
+
+WHAT IS THE DIFFERENCE BETWEEN CLASSIFICATION AND REGRESSION?
+Classification predicts discrete categories (yes/no, spam/not spam). Regression predicts continuous values (price, temperature). Classification uses logistic regression, decision trees; regression uses linear regression.
+
+WHAT IS THE DIFFERENCE BETWEEN OVERFITTING AND UNDERFITTING?
+Overfitting occurs when model learns training data too well but fails on new data (high variance). Underfitting occurs when model is too simple to capture patterns (high bias). Balance is needed for good generalization.
+
+WHAT IS THE DIFFERENCE BETWEEN STRUCTURED AND UNSTRUCTURED DATA?
+Structured data is organized in rows and columns (databases, Excel). Unstructured data has no predefined format (text, images, video). 80% of business data is unstructured.
+
+WHAT IS THE DIFFERENCE BETWEEN ETL AND ELT?
+ETL extracts, transforms, then loads data into warehouse (traditional). ELT extracts, loads, then transforms within warehouse (modern cloud). ELT is faster for large-scale data processing.
+
+WHAT IS THE DIFFERENCE BETWEEN DATA WAREHOUSE AND DATA LAKE?
+Data warehouse stores structured, processed data for analytics (schema-on-write). Data lake stores raw, unstructured data at scale (schema-on-read). Data lakes are cheaper and more flexible.
+
+WHAT IS THE DIFFERENCE BETWEEN PRIMARY KEY AND FOREIGN KEY?
+Primary key uniquely identifies each row in a table (unique, not null). Foreign key links tables by referencing primary key of another table. Foreign keys maintain referential integrity.
+
+WHAT IS THE DIFFERENCE BETWEEN STORED PROCEDURE AND FUNCTION?
+Stored procedure can perform multiple operations and has no return value requirement. Function must return a single value and is used in expressions. Functions are deterministic; procedures can have side effects.
+
+WHAT IS THE DIFFERENCE BETWEEN VIEW AND MATERIALIZED VIEW?
+View is virtual table that executes query each time (no storage). Materialized view stores results physically (faster queries). Materialized views need refreshing when source data changes.
+
+WHAT IS THE DIFFERENCE BETWEEN HAVING AND WHERE?
+WHERE filters rows before grouping (individual rows). HAVING filters groups after GROUP BY (aggregated results). WHERE works with non-aggregated columns; HAVING with aggregated columns.
+
+WHAT IS THE DIFFERENCE BETWEEN INNER JOIN AND LEFT JOIN?
+INNER JOIN returns only matching rows from both tables. LEFT JOIN returns all rows from left table, matching from right (NULL if no match). LEFT JOIN preserves all left table records.
+
+WHAT IS THE DIFFERENCE BETWEEN CLUSTERED AND NON-CLUSTERED INDEX?
+Clustered index determines physical order of data (one per table). Non-clustered index is separate structure pointing to data (many per table). Clustered is faster for range queries.
+
+WHAT IS THE DIFFERENCE BETWEEN CHAR AND VARCHAR?
+CHAR is fixed-length, faster for known length (e.g., codes). VARCHAR is variable-length, saves space for variable text. CHAR(10) always uses 10 bytes; VARCHAR(10) uses actual length plus overhead.
+
+WHAT IS THE DIFFERENCE BETWEEN DELETE, TRUNCATE, and DROP?
+DELETE removes rows one by one (can rollback, slower). TRUNCATE removes all rows quickly (minimal logging). DROP removes entire table structure. DELETE triggers can fire; TRUNCATE and DROP cannot.
+
+WHAT IS THE DIFFERENCE BETWEEN COOKIES AND SESSION?
+Cookies store data on client-side (limited to 4KB, persistent). Sessions store data on server-side (more secure, temporary). Sessions use cookies for session ID storage.
+
+WHAT IS THE DIFFERENCE BETWEEN GET AND POST?
+GET appends data to URL (visible, limited length, cached). POST sends data in request body (hidden, no size limit, not cached). Use GET for idempotent operations; POST for creating resources.
+
+WHAT IS THE DIFFERENCE BETWEEN PUT AND PATCH?
+PUT replaces entire resource with new version (idempotent). PATCH applies partial updates to resource (not necessarily idempotent). Use PUT for full updates; PATCH for partial updates.
+
+WHAT IS THE DIFFERENCE BETWEEN AUTHENTICATION AND AUTHORIZATION?
+Authentication verifies identity (login credentials). Authorization determines permissions after identity verified. Authentication precedes authorization.
+
+WHAT IS THE DIFFERENCE BETWEEN HASHING AND ENCRYPTION?
+Hashing is one-way transformation (cannot be reversed) for password storage. Encryption is two-way transformation (can be decrypted) for data privacy. Hashing is used for integrity; encryption for confidentiality.
+
+WHAT IS THE DIFFERENCE BETWEEN REST AND SOAP?
+REST is architectural style using HTTP (lightweight, JSON). SOAP is protocol with strict standards (heavier, XML). REST is more popular for web APIs; SOAP for enterprise systems.
+
+WHAT IS THE DIFFERENCE BETWEEN MONOLITHIC AND MICROSERVICES?
+Monolithic has all components in single application (simpler deployment). Microservices splits into independent services (scalable, complex). Microservices are better for large teams and scaling.
+
+WHAT IS THE DIFFERENCE BETWEEN OOP AND PROCEDURAL PROGRAMMING?
+OOP organizes code into objects with data and methods (reusable, modular). Procedural uses functions and global data (simple, linear). OOP is better for large applications.
+
+WHAT IS THE DIFFERENCE BETWEEN ABSTRACT CLASS AND INTERFACE?
+Abstract class can have implemented methods (single inheritance). Interface has only declarations (multiple inheritance). Abstract classes share code; interfaces define contracts.
+
+WHAT IS THE DIFFERENCE BETWEEN OVERLOADING AND OVERRIDING?
+Overloading has same method name, different parameters (compile-time). Overriding redefines parent method in child (runtime). Overloading adds new functionality; overriding changes existing.
+
+WHAT IS THE DIFFERENCE BETWEEN STACK AND HEAP?
+Stack stores local variables (fast, limited size). Heap stores dynamic objects (slower, larger). Stack manages function calls; heap manages allocated objects.
+
+WHAT IS THE DIFFERENCE BETWEEN PROCESS AND THREAD?
+Process is independent program instance (separate memory). Thread is lightweight unit within process (shared memory). Threads are more efficient for concurrent operations.
+
+WHAT IS THE DIFFERENCE BETWEEN CONCURRENCY AND PARALLELISM?
+Concurrency handles multiple tasks by interleaving (one CPU core). Parallelism executes multiple tasks simultaneously (multiple cores). Concurrency is about structure; parallelism about execution.
+
+WHAT IS THE DIFFERENCE BETWEEN COMPILER AND INTERPRETER?
+Compiler translates entire program before execution (faster execution, slower compilation). Interpreter executes line by line (slower execution, faster development). Compiled languages: C, C++, Go. Interpreted: Python, JavaScript.
+
+WHAT IS THE DIFFERENCE BETWEEN STATIC AND DYNAMIC TYPING?
+Static typing checks types at compile-time (TypeScript, Java, C#). Dynamic typing checks types at runtime (Python, JavaScript, Ruby). Static catches errors early; dynamic is more flexible.
+
+WHAT IS THE DIFFERENCE BETWEEN VALUE TYPE AND REFERENCE TYPE?
+Value type stores data directly in variable (stack). Reference type stores reference to data (heap). Value types: int, struct; Reference types: class, array.
+
+WHAT IS THE DIFFERENCE BETWEEN BREAK AND CONTINUE?
+Break exits the entire loop immediately. Continue skips current iteration and moves to next. Break stops all; continue skips one iteration.
+
+WHAT IS THE DIFFERENCE BETWEEN ABSTRACT CLASS AND CONCRETE CLASS?
+Abstract class cannot be instantiated (may have abstract methods). Concrete class can be instantiated (all methods implemented). Abstract classes serve as base for inheritance.
+
+WHAT IS THE DIFFERENCE BETWEEN DEPENDENCY INJECTION AND FACTORY PATTERN?
+Dependency Injection passes dependencies from external (IoC container). Factory Pattern creates objects without specifying concrete class. DI manages dependencies; Factory creates objects.
+
+WHAT IS THE DIFFERENCE BETWEEN MVC AND MVVM?
+MVC (Model-View-Controller) has Controller handling user input. MVVM (Model-View-ViewModel) uses ViewModel for data binding. MVVM is common in WPF, Angular; MVC in ASP.NET Core.
+
+WHAT IS THE DIFFERENCE BETWEEN UNIT TESTING AND INTEGRATION TESTING?
+Unit testing tests individual components in isolation (fast, focused). Integration testing tests how components work together (slower, broader). Unit tests mock dependencies; integration uses real.
+
+WHAT IS THE DIFFERENCE BETWEEN BDD AND TDD?
+TDD writes tests before code (unit-focused, red-green-refactor). BDD describes behavior in plain language (user-focused, Given-When-Then). BDD extends TDD for non-technical stakeholders.
+
+WHAT IS THE DIFFERENCE BETWEEN CI AND CD?
+Continuous Integration automatically builds and tests code changes. Continuous Delivery automatically deploys to production after CI. CD also can mean Continuous Deployment (auto deploy without approval).
+
+WHAT IS THE DIFFERENCE BETWEEN BLUE-GREEN AND CANARY DEPLOYMENT?
+Blue-green uses two identical environments (instant switch). Canary slowly rolls out to subset of users (gradual). Blue-green for zero downtime; Canary for risk reduction.
+
+WHAT IS THE DIFFERENCE BETWEEN STATELESS AND STATEFUL?
+Stateless application does not store client data between requests (scalable). Stateful application maintains session state (more complex). REST APIs are stateless; WebSockets are stateful.
+
+WHAT IS THE DIFFERENCE BETWEEN HORIZONTAL AND VERTICAL SCALING?
+Horizontal adds more machines (scales out, more fault tolerant). Vertical adds more power to existing machine (scales up, simpler). Horizontal is cheaper for cloud; vertical has hardware limits.
+
+WHAT IS THE DIFFERENCE BETWEEN LATENCY AND THROUGHPUT?
+Latency is time for single operation (milliseconds). Throughput is number of operations per second. Low latency + high throughput is ideal for performance.
+
+WHAT IS THE DIFFERENCE BETWEEN CACHING AND BUFFERING?
+Caching stores frequently accessed data for reuse (reduces latency). Buffering temporarily stores data for smooth processing (handles speed mismatch). Cache for repeated reads; buffer for streaming.
+
+WHAT IS THE DIFFERENCE BETWEEN SYNC AND ASYNC?
+Synchronous waits for operation to complete (blocks thread). Asynchronous continues execution (non-blocking). Async improves responsiveness and scalability.
+
+WHAT IS THE DIFFERENCE BETWEEN WEB 2.0 AND WEB 3.0?
+Web 2.0 focuses on user-generated content and social media (centralized). Web 3.0 focuses on decentralization and blockchain (user-owned data). Web 3.0 aims to give users data ownership.
+
+WHAT IS THE DIFFERENCE BETWEEN UI AND UX?
+UI (User Interface) focuses on visual design and layout. UX (User Experience) focuses on overall user journey and satisfaction. UI is part of UX; good UI supports good UX.
+
+WHAT IS THE DIFFERENCE BETWEEN RESPONSIVE AND ADAPTIVE DESIGN?
+Responsive design fluidly adjusts to any screen size (flexible). Adaptive design has fixed layouts for specific breakpoints. Responsive is more flexible; adaptive is more targeted.
+
+WHAT IS THE DIFFERENCE BETWEEN COOKIE AND LOCAL STORAGE?
+Cookie stores small data (4KB) sent with each request. Local Storage stores larger data (5-10MB) client-side only. Local Storage is faster and not sent to server.
+
+WHAT IS THE DIFFERENCE BETWEEN PROTOTYPE AND CLASS?
+Class is blueprint for objects (traditional OOP). Prototype is existing object that clones itself (JavaScript). JavaScript uses prototypal inheritance; C# uses classical.
+
+WHAT IS THE DIFFERENCE BETWEEN PROMISE AND CALLBACK?
+Callback is function passed as argument (callback hell risk). Promise represents future value (chainable, better error handling). Promises simplify async code over callbacks.
+
+WHAT IS THE DIFFERENCE BETWEEN VAR, LET, AND CONST?
+Var is function-scoped (hoisted, can redeclare). Let is block-scoped (no redeclare, can reassign). Const is block-scoped (no redeclare, no reassign). Use const by default, let when reassigning.
+
+WHAT IS THE DIFFERENCE BETWEEN == AND ===?
+== compares values with type coercion (loose equality). === compares values and types (strict equality). Use === to avoid unexpected type conversions.
+
+WHAT IS THE DIFFERENCE BETWEEN SPREAD AND REST OPERATORS?
+Spread expands elements (array to arguments). Rest collects arguments into array. Both use ... syntax but opposite direction.
+
+WHAT IS THE DIFFERENCE BETWEEN MAP AND FOR-EACH?
+Map returns new array with transformed elements (chainable). For-Each executes function without returning value (forEach). Map for transformation; forEach for side effects.
+
+WHAT IS THE DIFFERENCE BETWEEN FILTER AND FIND?
+Filter returns array of all matching elements. Find returns first matching element or undefined. Filter for multiple; find for single result.
+
+WHAT IS THE DIFFERENCE BETWEEN SLICE AND SPLICE?
+Slice extracts portion without modifying original (create new). Splice modifies original array (remove/replace). Slice for copying; splice for mutating.
+
+WHAT IS THE DIFFERENCE BETWEEN OBJECT AND MAP?
+Object uses string keys, prototype inheritance, less performance for frequent add/remove. Map allows any key type, preserves insertion order, better for frequent operations.
+
+WHAT IS THE DIFFERENCE BETWEEN NULL AND UNDEFINED?
+Undefined means variable declared but not assigned value. Null means intentional absence of value. Undefined is default; null is assigned.
+
+WHAT IS THE DIFFERENCE BETWEEN EVENT BUBBLING AND EVENT CAPTURING?
+Bubbling propagates event from target to parent (upwards). Capturing propagates from parent to target (downwards). Bubbling is default; capturing is used rarely.
+
+WHAT IS THE DIFFERENCE BETWEEN GRACEful DEGRADATION AND PROGRESSIVE ENHANCEMENT?
+Graceful degradation starts with full experience, works without advanced features. Progressive enhancement starts with baseline, adds advanced features. Progressive enhancement is preferred for responsive design.
+
+WHAT IS THE DIFFERENCE BETWEEN HTTP/1.1 AND HTTP/2?
+HTTP/1.1 uses text protocol, multiple connections. HTTP/2 uses binary protocol, multiplexing (single connection). HTTP/2 is faster with header compression and server push.
+
+WHAT IS THE DIFFERENCE BETWEEN DOM AND BOM?
+DOM (Document Object Model) represents HTML document structure. BOM (Browser Object Model) represents browser windows. DOM is for page content; BOM for browser functionality.
+
+WHAT IS THE DIFFERENCE BETWEEN INLINE AND BLOCK ELEMENTS?
+Inline elements fit in text flow (span, a, img). Block elements occupy full width (div, p, h1). Block elements start on new line; inline do not.
+
+WHAT IS THE DIFFERENCE BETWEEN CLASS AND ID SELECTORS?
+Class selector targets multiple elements (use .class). ID selector targets single unique element (use #id). IDs have higher specificity than classes.
+
+WHAT IS THE DIFFERENCE BETWEEN POSITION RELATIVE AND ABSOLUTE?
+Relative positions element relative to its normal position. Absolute positions relative to nearest positioned ancestor. Relative moves element; absolute removes from flow.
+
+WHAT IS THE DIFFERENCE BETWEEN MARGIN AND PADDING?
+Margin is space outside element border (affects neighbors). Padding is space inside element between content and border. Margin pushes external; padding pushes internal.
+
+WHAT IS THE DIFFERENCE BETWEEN DISPLAY NONE AND VISIBILITY HIDDEN?
+Display none removes element completely (no space). Visibility hidden hides element but occupies space. Display none for removal; visibility hidden for invisible presence.
+
+WHAT IS THE DIFFERENCE BETWEEN NATIVE AND CROSS-PLATFORM DEVELOPMENT?
+Native uses platform-specific languages (Swift, Kotlin). Cross-platform uses single codebase (React Native, Flutter). Native gives better performance; cross-platform faster development.
+
+WHAT IS THE DIFFERENCE BETWEEN APACHE AND NGINX?
+Apache uses process-driven architecture (more flexible). NGINX uses event-driven (better performance). NGINX is faster for static files; Apache has more modules.
+
+WHAT IS THE DIFFERENCE BETWEEN SQLite AND MySQL?
+SQLite is file-based, lightweight (embeddable). MySQL is client-server, scalable (multi-user). SQLite for mobile; MySQL for web applications.
+
+WHAT IS THE DIFFERENCE BETWEEN MongoDB AND PostgreSQL?
+MongoDB is NoSQL document database (flexible schema). PostgreSQL is relational SQL database (structured schema). MongoDB for unstructured data; PostgreSQL for complex queries.
+
+WHAT IS THE DIFFERENCE BETWEEN REDIS AND MEMCACHED?
+Redis supports multiple data structures and persistence. Memcached supports simple key-value only (no persistence). Redis is more feature-rich; Memcached is simpler.
+
+WHAT IS THE DIFFERENCE BETWEEN ELASTICSEARCH AND SOLR?
+Elasticsearch is distributed, real-time, open-source (more popular). Solr is also powerful with rich query syntax. Both based on Lucene; Elasticsearch is more scalable.
+
+WHAT IS THE DIFFERENCE BETWEEN KAFKA AND RABBITMQ?
+Kafka is distributed streaming platform (high throughput, replayable). RabbitMQ is message broker (complex routing, reliable). Kafka for streaming; RabbitMQ for task distribution.
+
+WHAT IS THE DIFFERENCE BETWEEN GIT AND SVN?
+Git is distributed version control (each clone is full repo). SVN is centralized (single server). Git is more flexible; SVN has simpler model.
+
+WHAT IS THE DIFFERENCE BETWEEN GITHUB AND GITLAB?
+GitHub is cloud-based social coding platform. GitLab offers both cloud and self-hosted with CI/CD. Both host Git repos; GitLab has built-in CI/CD.
+
+WHAT IS THE DIFFERENCE BETWEEN JIRA AND TRELLO?
+Jira is for complex Agile project management (structured). Trello uses simple kanban boards (visual). Jira for large teams; Trello for small projects.
+
+WHAT IS THE DIFFERENCE BETWEEN SLACK AND TEAMS?
+Slack is focused on messaging and integrations (channel-based). Teams integrates with Office 365 (video calls). Both are communication tools; Teams better for Microsoft shops.
+
+WHAT IS THE DIFFERENCE BETWEEN DOCKER AND VAGRANT?
+Docker uses OS-level virtualization (containers, lightweight). Vagrant uses full virtual machines (heavier). Docker for microservices; Vagrant for dev environments.
+
+WHAT IS THE DIFFERENCE BETWEEN ANSIBLE AND TERRAFORM?
+Ansible configures existing infrastructure (configuration management). Terraform provisions infrastructure (infrastructure as code). Ansible for installation; Terraform for creation.
+
+WHAT IS THE DIFFERENCE BETWEEN PROMETHEUS AND GRAFANA?
+Prometheus collects and stores metrics (time-series DB). Grafana visualizes metrics from multiple sources. Prometheus for data; Grafana for dashboards.
+
+WHAT IS THE DIFFERENCE BETWEEN SCRUM AND KANBAN?
+Scrum has fixed-length sprints with roles and ceremonies. Kanban is continuous flow with WIP limits. Scrum for structured; Kanban for flexibility.

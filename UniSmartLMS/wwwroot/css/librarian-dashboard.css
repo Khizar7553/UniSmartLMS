@@ -1,0 +1,84 @@
+﻿/* ========================================
+   LIBRARIAN DASHBOARD SPECIFIC STYLES
+   ======================================== */
+
+/* Quick Stats Squares */
+.stat-square {
+    transition: all 0.3s ease;
+    border-radius: 16px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+    .stat-square:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .stat-square .stat-icon-large {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.7;
+    }
+
+    .stat-square .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+/* Daily Operations Panel */
+.ops-panel {
+    background: linear-gradient(135deg, var(--gray-100), var(--white));
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.ops-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+    .ops-item:last-child {
+        border-bottom: none;
+    }
+
+/* Action Buttons Grid */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.action-btn-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--gray-200);
+    text-decoration: none;
+    color: var(--gray-900);
+}
+
+    .action-btn-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary-green);
+    }
+
+    .action-btn-card i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .action-btn-card span {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }

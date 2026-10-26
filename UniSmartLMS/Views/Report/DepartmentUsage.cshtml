@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Department Usage";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-info text-white">
+            <h4><i class="fas fa-building me-2"></i>Department Usage Report</h4>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle me-2"></i>
+                @ViewBag.Message
+            </div>
+            <p class="text-muted">This feature will show library usage statistics by department.</p>
+            <a asp-action="Dashboard" class="btn btn-primary">Back to Reports</a>
+        </div>
+    </div>
+</div>

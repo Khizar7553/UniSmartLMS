@@ -1,0 +1,64 @@
+﻿@model List<UniSmartLMS.Controllers.MemberActivityViewModel>
+@{
+    ViewData["Title"] = "Member Activity Report";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-success text-white">
+            <h4><i class="fas fa-users me-2"></i>Member Activity Report</h4>
+        </div>
+        <div class="card-body">
+            <form method="get" class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <label>From Date</label>
+                    <input type="date" name="fromDate" value="@ViewBag.FromDate" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label>To Date</label>
+                    <input type="date" name="toDate" value="@ViewBag.ToDate" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn btn-success w-100">Apply Filter</button>
+                </div>
+            </form>
+
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Rank</th>
+                                <th>Card No.</th>
+                                <th>Member Name</th>
+                                <th>Books Borrowed</th>
+                                <th>Total Fines (Rs.)</th>
+                                <th>Last Active</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                var member = Model[i];
+                                <tr>
+                                    <td>@(i + 1)</td>
+                                    <td class="fw-bold">@member.CardNo</td>
+                                    <td>@member.MemberName</td>
+                                    <td><span class="badge bg-primary">@member.TotalBooksBorrowed</span></td>
+                                    <td><span class="text-danger">@member.TotalFines.ToString("N2")</span></td>
+                                    <td>@member.LastActiveDate.ToString("dd MMM yyyy")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info text-center">No data found.</div>
+            }
+        </div>
+    </div>
+</div>

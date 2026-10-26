@@ -1,0 +1,56 @@
+﻿@model IEnumerable<UniSmartLMS.Models.SectionH_Digital.DigitalResource>
+@{
+    ViewData["Title"] = "Research Resources";
+}
+
+<div class="container mt-4">
+    <h2><i class="fas fa-flask me-2"></i>Research Resources</h2>
+    <p class="text-muted">Access digital journals, research papers, and academic databases</p>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <i class="fas fa-file-alt fa-3x text-primary mb-3"></i>
+                    <h5>Research Papers</h5>
+                    <p>Access thousands of research papers and journals</p>
+                    <a href="#" class="btn btn-outline-primary">Browse Papers</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-body">
+                    <i class="fas fa-database fa-3x text-success mb-3"></i>
+                    <h5>Digital Library</h5>
+                    <p>E-books, theses, and digital resources</p>
+                    <a href="#" class="btn btn-outline-success">Access Digital Library</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="card shadow-lg border-0 rounded-4 mt-4">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0"><i class="fas fa-download me-2"></i>Digital Resources</h5>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr><th class="ps-4">Resource</th><th>Format</th><th>Size</th><th class="pe-4">Downloads</th></tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr><td class="ps-4">@item.ItemInfo?.Title</td><td>@item.FileFormat</td><td>@item.FileSizeMb MB</td><td class="pe-4">@item.TotalDownloads</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>

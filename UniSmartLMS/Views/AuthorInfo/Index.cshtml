@@ -1,0 +1,88 @@
+﻿@model IEnumerable<UniSmartLMS.Models.SectionC_Catalog.AuthorInfo>
+
+@{
+    ViewData["Title"] = "Authors";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="display-6 fw-bold text-success">
+                <i class="fas fa-user-edit me-3"></i>Authors
+            </h1>
+            <p class="text-muted">Manage all book authors</p>
+        </div>
+        <a asp-action="Create" class="btn btn-success btn-lg shadow">
+            <i class="fas fa-plus-circle me-2"></i>Add New Author
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm">
+            <i class="fas fa-check-circle me-2"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Search Box -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form asp-action="Search" method="get" class="row g-3">
+                <div class="col-md-10">
+                    <input type="text" name="searchTerm" class="form-control form-control-lg"
+                           placeholder="Search by author name..." value="@ViewBag.SearchTerm" />
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                        <i class="fas fa-search me-2"></i>Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+            <i class="fas fa-list me-2"></i> Authors List
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-3">ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th class="text-end pe-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="ps-3">@item.Id</td>
+                                <td class="fw-bold">@item.Name</td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge bg-success rounded-pill">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger rounded-pill">Inactive</span>
+                                    }
+                                </td>
+                                <td class="text-end pe-3">
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1"><i class="fas fa-eye"></i></a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning me-1"><i class="fas fa-edit"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

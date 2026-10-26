@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Reports Dashboard";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-primary text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-chart-line me-3"></i>Reports Dashboard</h2>
+                <p class="mb-0 opacity-75">Analytics and insights for library operations</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-3">
+            <a asp-action="PopularBooks" class="text-decoration-none">
+                <div class="card text-center shadow-lg border-0 rounded-4 h-100 hover-card">
+                    <div class="card-body py-4">
+                        <i class="fas fa-star fa-4x text-warning mb-3"></i>
+                        <h4>Popular Books</h4>
+                        <p class="text-muted">Most borrowed books</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="MemberActivity" class="text-decoration-none">
+                <div class="card text-center shadow-lg border-0 rounded-4 h-100 hover-card">
+                    <div class="card-body py-4">
+                        <i class="fas fa-users fa-4x text-success mb-3"></i>
+                        <h4>Member Activity</h4>
+                        <p class="text-muted">Top active members</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="FineCollection" class="text-decoration-none">
+                <div class="card text-center shadow-lg border-0 rounded-4 h-100 hover-card">
+                    <div class="card-body py-4">
+                        <i class="fas fa-rupee-sign fa-4x text-danger mb-3"></i>
+                        <h4>Fine Collection</h4>
+                        <p class="text-muted">Revenue from fines</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a asp-action="DepartmentUsage" class="text-decoration-none">
+                <div class="card text-center shadow-lg border-0 rounded-4 h-100 hover-card">
+                    <div class="card-body py-4">
+                        <i class="fas fa-building fa-4x text-info mb-3"></i>
+                        <h4>Department Usage</h4>
+                        <p class="text-muted">Library usage by department</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hover-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+        }
+</style>

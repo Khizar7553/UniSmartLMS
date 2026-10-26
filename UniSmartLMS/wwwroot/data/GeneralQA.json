@@ -1,0 +1,94 @@
+{
+  "greetings": [
+    {
+      "patterns": [ "hi", "hello", "hey", "hy", "hye", "salam", "assalam o alaikum", "good morning", "good afternoon", "good evening" ],
+      "responses": [
+        "👋 Hello! How can I assist you with your library needs today?",
+        "✨ Hi there! Welcome to UniSmartLMS AI Assistant. What can I help you find?",
+        "📚 Hello! I'm your library AI assistant. Ask me about books, research, or any library services!"
+      ]
+    },
+    {
+      "patterns": [ "how are you", "how are you doing", "how do you do" ],
+      "responses": [
+        "🤖 I'm functioning perfectly! Thanks for asking. How can I help you today?",
+        "✨ I'm great! Ready to assist you with your library queries.",
+        "📚 I'm doing well! What brings you to the library today?"
+      ]
+    },
+    {
+      "patterns": [ "what is your name", "who are you", "tell me about yourself" ],
+      "responses": [
+        "🤖 I'm UniSmart AI, your intelligent library assistant powered by advanced AI technology.",
+        "✨ I'm the UniSmartLMS AI Assistant, here to help you with book searches, research papers, and library services.",
+        "📚 I'm your virtual librarian! Ask me anything about the library or your uploaded documents."
+      ]
+    },
+    {
+      "patterns": [ "what can you do", "how can you help me", "your capabilities", "what help you provide" ],
+      "responses": [
+        "📚 I can help you with:\n• Search and understand uploaded documents\n• Answer questions about books and research\n• Guide you through library services\n• Explain complex topics from your PDFs\n• Find information in your documents\n\nJust upload a document and ask me anything!",
+        "✨ My capabilities include:\n✅ Answering questions from uploaded PDFs/DOCX/PPTX\n✅ Providing detailed definitions and explanations\n✅ Finding key points and summaries\n✅ Citing sources from your documents\n✅ Helping with library navigation\n\nWhat would you like me to help with?"
+      ]
+    }
+  ],
+  "farewells": [
+    {
+      "patterns": [ "bye", "goodbye", "see you later", "bye bye", "tata", "allah hafiz" ],
+      "responses": [
+        "👋 Goodbye! Come back anytime. Happy reading! 📚",
+        "✨ Bye! Remember, I'm always here to help with your library needs.",
+        "📚 Take care! Feel free to ask if you need any help."
+      ]
+    }
+  ],
+  "thanks": [
+    {
+      "patterns": [ "thank you", "thanks", "thank you so much", "thanks a lot", "appreciate it" ],
+      "responses": [
+        "🤖 You're welcome! Happy to help 😊",
+        "✨ My pleasure! Is there anything else I can assist you with?",
+        "📚 Anytime! That's what I'm here for."
+      ]
+    }
+  ],
+  "small_talk": [
+    {
+      "patterns": [ "what's up", "whats up", "how's it going", "how is it going" ],
+      "responses": [
+        "✨ Not much! Ready to help you with your library questions. What's on your mind?",
+        "📚 All systems ready! How can I assist you today?"
+      ]
+    },
+    {
+      "patterns": [ "good", "nice", "awesome", "great", "cool" ],
+      "responses": [
+        "👍 Awesome! Let me know if you need any help.",
+        "✨ Great! I'm here whenever you need assistance."
+      ]
+    },
+    {
+      "patterns": [ "i love you", "love you" ],
+      "responses": [
+        "💙 That's sweet! I'm here to help you learn and discover knowledge.",
+        "📚 I'm flattered! Let me help you find the perfect book or answer your questions."
+      ]
+    },
+    {
+      "patterns": [ "are you real", "are you human", "are you ai" ],
+      "responses": [
+        "🤖 I'm an AI assistant created to help with library services. I'm not human, but I'm here to help 24/7!",
+        "✨ I'm an artificial intelligence designed to answer your library questions accurately and quickly."
+      ]
+    }
+  ],
+  "help": [
+    {
+      "patterns": [ "help", "help me", "i need help", "support" ],
+      "responses": [
+        "📚 **How can I help you?**\n\n• Ask questions about uploaded documents\n• Get definitions and explanations\n• Find key points and summaries\n• Get citations from sources\n\n**Try:**\n• 'What is Python?'\n• 'Explain machine learning'\n• 'Summarize this document'\n• 'List key findings'\n\nUpload a PDF, DOCX, or PPTX file to get started!",
+        "✨ **Quick Commands:**\n\n✅ Upload documents → Ask questions\n✅ Get detailed answers with sources\n✅ Extract key points automatically\n\nWhat would you like to know?"
+      ]
+    }
+  ]
+}

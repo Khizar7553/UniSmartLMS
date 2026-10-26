@@ -1,0 +1,75 @@
+﻿@model UniSmartLMS.Models.SectionB_Library.LibraryBranch
+
+@{
+    ViewData["Title"] = "Edit Library Branch";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Library Branch</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold">Branch Name</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Code" class="form-label fw-bold">Branch Code</label>
+                            <input asp-for="Code" class="form-control" />
+                            <span asp-validation-for="Code" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="LibraryTypeId" class="form-label fw-bold">Library Type</label>
+                            <select asp-for="LibraryTypeId" class="form-control" asp-items="ViewBag.LibraryTypeList">
+                                <option value="">-- Select Type --</option>
+                            </select>
+                            <span asp-validation-for="LibraryTypeId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ParentId" class="form-label fw-bold">Parent Branch</label>
+                            <select asp-for="ParentId" class="form-control" asp-items="ViewBag.ParentBranchList">
+                                <option value="">-- None (Main Branch) --</option>
+                            </select>
+                            <span asp-validation-for="ParentId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

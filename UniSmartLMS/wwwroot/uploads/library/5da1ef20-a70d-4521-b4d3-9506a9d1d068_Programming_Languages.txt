@@ -1,0 +1,59 @@
+WHAT IS PYTHON?
+Python is a high-level, interpreted programming language known for simplicity and readability. Created by Guido van Rossum in 1991. Used for web development, data science, AI, automation.
+
+WHAT IS JAVA?
+Java is object-oriented, platform-independent language. "Write once, run anywhere" via JVM. Used for Android apps, enterprise software.
+
+WHAT IS JAVASCRIPT?
+JavaScript is the language of web browsers. Enables interactive web pages, animations, and web applications.
+
+WHAT IS C?
+C is a general-purpose, procedural language. Foundation for many modern languages. Used for operating systems, embedded systems.
+
+WHAT IS C++?
+C++ extends C with object-oriented features. Used for games, high-performance applications, system software.
+
+WHAT IS C#?
+C# is Microsoft's object-oriented language. Used for Windows apps, game development (Unity), enterprise applications.
+
+WHAT IS SQL?
+SQL (Structured Query Language) manages relational databases. Commands: SELECT, INSERT, UPDATE, DELETE, JOIN.
+
+WHAT IS R?
+R is a language for statistical computing and graphics. Used by data scientists, statisticians, researchers.
+
+WHAT IS GO (GOLANG)?
+Go is Google's language for concurrent programming. Known for simplicity, performance, and excellent concurrency support.
+
+WHAT IS RUST?
+Rust is a systems programming language focused on safety and speed. Prevents memory errors without garbage collection.
+
+WHAT IS KOTLIN?
+Kotlin is a modern JVM language fully interoperable with Java. Official language for Android development.
+
+WHAT IS SWIFT?
+Swift is Apple's language for iOS, macOS development. Modern, safe, and fast.
+
+WHAT IS PHP?
+PHP is server-side scripting language for web development. Powers WordPress, Facebook (historically), many CMS.
+
+WHAT IS TYPESCRIPT?
+TypeScript adds static typing to JavaScript. Developed by Microsoft, compiles to plain JavaScript.
+
+WHAT IS HTML?
+HTML (HyperText Markup Language) structures web pages using elements and tags.
+
+WHAT IS CSS?
+CSS (Cascading Style Sheets) controls presentation: layout, colors, fonts, responsive design.
+
+WHAT IS REACT?
+React is a JavaScript library for building user interfaces. Component-based, uses virtual DOM. Created by Facebook.
+
+WHAT IS ANGULAR?
+Angular is Google's TypeScript-based web framework for building single-page applications.
+
+WHAT IS VUE.JS?
+Vue.js is a progressive JavaScript framework for building UIs. Known for simplicity and flexibility.
+
+WHAT IS NODE.JS?
+Node.js runs JavaScript on servers. Event-driven, non-blocking, ideal for real-time applications.

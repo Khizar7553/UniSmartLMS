@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    <li><a class="dropdown-item disabled" href="#">👤 @user?.FullName</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="dropdown-item text-danger">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </button>
+        </form>
+    </li>
+}
+else
+{
+    <li>
+        <a class="dropdown-item" asp-controller="Account" asp-action="Register">
+            <i class="fas fa-user-plus me-2"></i>Register
+        </a>
+    </li>
+    <li>
+        <a class="dropdown-item" asp-controller="Account" asp-action="Login">
+            <i class="fas fa-sign-in-alt me-2"></i>Login
+        </a>
+    </li>
+}

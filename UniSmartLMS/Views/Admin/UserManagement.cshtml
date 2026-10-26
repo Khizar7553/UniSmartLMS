@@ -1,0 +1,146 @@
+﻿@model IEnumerable<UniSmartLMS.Models.AppUser>
+@{
+    ViewData["Title"] = "User Management";
+    var userRoles = ViewBag.UserRoles as Dictionary<string, IList<string>>;
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-users me-2"></i>User Management</h2>
+        <a asp-action="CreateUser" class="btn btn-success">
+            <i class="fas fa-user-plus me-2"></i>Create User
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            <i class="fas fa-check-circle me-2"></i> @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <i class="fas fa-exclamation-triangle me-2"></i> @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>User Type</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>@user.FullName</td>
+                                <td>@user.Email</td>
+                                <td>@user.Party?.PartyContact</td>
+                                <td><span class="badge bg-info">@user.UserType</span></td>
+                                <td>
+                                    @if (userRoles.ContainsKey(user.Id))
+                                    {
+                                        foreach (var role in userRoles[user.Id])
+                                        {
+                                            <span class="badge bg-secondary">@role</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Not Assigned</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (user.IsActive)
+                                    {
+                                        <span class="badge bg-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Inactive</span>
+                                    }
+                                </td>
+                                <td>
+                                    <a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-sm btn-warning" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm btn-info" title="Reset Password" data-bs-toggle="modal" data-bs-target="#resetModal@(user.Id)">
+                                        <i class="fas fa-key"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger" title="Delete" data-bs-toggle="modal" data-bs-target="#deleteModal@(user.Id)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+@foreach (var user in Model)
+{
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal@(user.Id)" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete user <strong>@user.FullName</strong>?
+                </div>
+                <div class="modal-footer">
+                    <form asp-action="DeleteUser" method="post">
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Password Modal -->
+    <div class="modal fade" id="resetModal@(user.Id)" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form asp-action="ResetUserPassword" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <div class="mb-3">
+                            <label class="form-label">New Password for <strong>@user.FullName</strong></label>
+                            <input type="password" name="newPassword" class="form-control" required />
+                            <small class="text-muted">Minimum 4 characters</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-info">Reset Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

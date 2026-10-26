@@ -1,0 +1,44 @@
+﻿@model UniSmartLMS.Models.SectionE_Circulation.ReserveItem
+
+@{
+    ViewData["Title"] = "Cancel Reservation";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4 border-danger">
+                <div class="card-header bg-danger text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-trash-alt me-2"></i>Cancel Reservation</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Warning!</strong> This will cancel the reservation.
+                    </div>
+                    <dl class="row">
+                        <dt class="col-sm-4">Book Title</dt>
+                        <dd class="col-sm-8">@Model.ItemInfo?.Title</dd>
+
+                        <dt class="col-sm-4">Member Card</dt>
+                        <dd class="col-sm-8">@Model.LibraryMember?.CardNo</dd>
+
+                        <dt class="col-sm-4">Expiry Date</dt>
+                        <dd class="col-sm-8">@Model.ExpiryDate.ToString("dd MMM yyyy")</dd>
+
+                        <dt class="col-sm-4">Status</dt>
+                        <dd class="col-sm-8">@(Model.IsActive ? "Active" : "Cancelled")</dd>
+                    </dl>
+                    <hr />
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-danger px-4"><i class="fas fa-trash-alt me-2"></i>Confirm Cancel</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

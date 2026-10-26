@@ -1,0 +1,55 @@
+﻿@model UniSmartLMS.Models.SectionG_Acquisitions.AcquisitionRecord
+
+@{
+    ViewData["Title"] = "Acquisition Record Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-info text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-info-circle me-2"></i>Acquisition Record Details</h3>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Transaction Type</dt>
+                                <dd>@Model.Type</dd>
+
+                                <dt>Vendor / Party</dt>
+                                <dd>@Model.Party?.PartyName</dd>
+
+                                <dt>Invoice Number</dt>
+                                <dd>@Model.Invoice</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl>
+                                <dt>Transaction Date</dt>
+                                <dd>@Model.Date.ToString("dd MMM yyyy")</dd>
+
+                                <dt>Amount</dt>
+                                <dd>Rs. @Model.Amount.ToString("N2")</dd>
+
+                                <dt>Status</dt>
+                                <dd>
+                                    @if (Model.IsActive)
+                                    {
+                                        <span class="badge bg-success">Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Inactive</span>
+                                    }
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-end gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fas fa-edit me-2"></i>Edit</a>
+                        <a asp-action="Index" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>Back</a>
+                    </div>
+                </div>

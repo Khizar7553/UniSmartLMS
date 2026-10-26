@@ -1,0 +1,71 @@
+﻿@model UniSmartLMS.Models.SectionA_University.Room
+
+@{
+    ViewData["Title"] = "Create Room";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Add New Room</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="FloorId" class="form-label fw-bold">Floor</label>
+                            <select asp-for="FloorId" class="form-control" asp-items="ViewBag.FloorList">
+                                <option value="">-- Select Floor --</option>
+                            </select>
+                            <span asp-validation-for="FloorId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-door-open text-success"></i></span>
+                                <input asp-for="Name" class="form-control" placeholder="e.g., Room 101" />
+                            </div>
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Code" class="form-label fw-bold"></label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="fas fa-tag text-success"></i></span>
+                                <input asp-for="Code" class="form-control" placeholder="e.g., RM-101" />
+                            </div>
+                            <span asp-validation-for="Code" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Room description..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Create Room</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

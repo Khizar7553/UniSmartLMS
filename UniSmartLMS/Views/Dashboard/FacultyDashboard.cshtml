@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Faculty Dashboard";
+}
+
+<style>
+    .faculty-card {
+        transition: transform 0.2s;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+        }
+</style>
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-primary text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-chalkboard-user me-3"></i>Welcome, @ViewBag.MemberName</h2>
+                <p class="mb-0 opacity-75"><i class="fas fa-graduation-cap me-2"></i>Faculty Dashboard - Research & Teaching Resources</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card faculty-card bg-primary text-white shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-book-open fa-3x mb-3"></i>
+                    <h2 class="display-4 fw-bold">@ViewBag.CurrentLoansCount</h2>
+                    <p class="mb-0">Current Loans</p>
+                    <small>Extended faculty loans</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card faculty-card bg-success text-white shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-hourglass-half fa-3x mb-3"></i>
+                    <h2 class="display-4 fw-bold">60</h2>
+                    <p class="mb-0">Loan Days</p>
+                    <small>Extended period for faculty</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card faculty-card bg-warning text-white shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-chalkboard-user fa-3x mb-3"></i>
+                    <h2 class="display-4 fw-bold">5</h2>
+                    <p class="mb-0">Course Reserves</p>
+                    <small>Books for your courses</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card faculty-card bg-info text-white shadow">
+                <div class="card-body text-center">
+                    <i class="fas fa-file-alt fa-3x mb-3"></i>
+                    <h2 class="display-4 fw-bold">12</h2>
+                    <p class="mb-0">Publications</p>
+                    <small>Your research papers</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 h-100">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-book me-2"></i>Browse Books</h5>
+                </div>
+                <div class="card-body text-center">
+                    <i class="fas fa-book-open fa-3x text-primary mb-3"></i>
+                    <p class="text-muted">Explore our complete book collection</p>
+                    <a href="/FacultyCatalog/Books" class="btn btn-primary w-100 mb-2">
+                        <i class="fas fa-book-open me-2"></i>Browse All Books
+                    </a>
+                    <a href="/SmartLibrary/Index" class="btn btn-success w-100">
+                        <i class="fas fa-brain me-2"></i>AI Smart Library
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 h-100">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-star me-2"></i>Research Resources</h5>
+                </div>
+                <div class="card-body text-center">
+                    <i class="fas fa-file-alt fa-3x text-info mb-3"></i>
+                    <p class="text-muted">Access digital journals and research papers</p>
+                    <a href="/Research/Index" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-file-alt me-2"></i>Research Papers
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0 rounded-4 h-100">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-hand-holding-heart me-2"></i>Borrow Requests</h5>
+                </div>
+                <div class="card-body text-center">
+                    <i class="fas fa-paper-plane fa-3x text-warning mb-3"></i>
+                    <p class="text-muted">Submit requests to borrow books</p>
+                    <a href="/BorrowRequest/Create" class="btn btn-outline-warning w-100 mb-2">
+                        <i class="fas fa-paper-plane me-2"></i>Request Book
+                    </a>
+                    <a href="/BorrowRequest/MyRequests" class="btn btn-outline-info w-100">
+                        <i class="fas fa-list me-2"></i>My Requests
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

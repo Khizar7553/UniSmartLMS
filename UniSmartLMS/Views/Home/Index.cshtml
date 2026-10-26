@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "UniSmartLMS - Intelligent Library System";
+}
+
+<!-- CSS Files -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/homepage.css" />
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="main-title">
+            <i class="fas fa-robot"></i> UniSmartLMS
+        </h1>
+        <h2 class="sub-title">Intelligent University Library System</h2>
+        <p class="description">
+            AI-Powered Library Management with Smart Search,<br />
+            Real-time Analytics, and Intelligent Assistant
+        </p>
+
+        <!-- Search Bar -->
+        <div class="search-wrapper">
+            <div class="input-group">
+                <input type="text" class="form-control search-input"
+                       placeholder="Search books, journals, articles..." />
+                <button class="btn search-btn" type="button">
+                    <i class="fas fa-search me-2"></i>Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Galaxy Orbit -->
+        <div class="galaxy-container">
+            <div class="quran-center">
+                <i class="fas fa-book-open"></i>
+                <span>القرآن</span>
+            </div>
+            <div class="orbit-ring">
+                <div class="orbit-book"><i class="fas fa-microchip"></i><span>CS/IT</span></div>
+                <div class="orbit-book"><i class="fas fa-square-root-variable"></i><span>Math</span></div>
+                <div class="orbit-book"><i class="fas fa-atom"></i><span>Physics</span></div>
+                <div class="orbit-book"><i class="fas fa-flask"></i><span>Science</span></div>
+                <div class="orbit-book"><i class="fas fa-chalkboard"></i><span>Research</span></div>
+                <div class="orbit-book"><i class="fas fa-code"></i><span>Programming</span></div>
+                <div class="orbit-book"><i class="fas fa-chart-line"></i><span>AI/ML</span></div>
+                <div class="orbit-book"><i class="fas fa-language"></i><span>Urdu</span></div>
+            </div>
+        </div>
+
+        <!-- Portal Buttons -->
+        <div class="portal-buttons">
+            <a href="#" class="btn-portal btn-student">
+                <i class="fas fa-graduation-cap"></i> Student Portal
+            </a>
+            <a href="#" class="btn-portal btn-librarian">
+                <i class="fas fa-chalkboard-user"></i> Librarian Portal
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="container my-5">
+    <div class="row g-4 text-center">
+        <div class="col-md-3">
+            <div class="card stat-card bg-primary text-white p-4 shadow">
+                <i class="fas fa-book fa-3x mb-3"></i>
+                <h2 class="fw-bold">50,000+</h2>
+                <p>Books Available</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-success text-white p-4 shadow">
+                <i class="fas fa-users fa-3x mb-3"></i>
+                <h2 class="fw-bold">10,000+</h2>
+                <p>Active Members</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-warning text-white p-4 shadow">
+                <i class="fas fa-chalkboard-user fa-3x mb-3"></i>
+                <h2 class="fw-bold">500+</h2>
+                <p>Faculty/Staff</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stat-card bg-info text-white p-4 shadow">
+                <i class="fas fa-clock fa-3x mb-3"></i>
+                <h2 class="fw-bold">24/7</h2>
+                <p>AI Assistant</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Powerful Features</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card text-center p-4 shadow-sm h-100">
+                    <i class="fas fa-robot fa-3x text-primary mb-3"></i>
+                    <h4>AI Assistant</h4>
+                    <p class="text-muted">24/7 intelligent avatar to help students and staff</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card text-center p-4 shadow-sm h-100">
+                    <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                    <h4>Smart Analytics</h4>
+                    <p class="text-muted">Real-time reports and insights</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card text-center p-4 shadow-sm h-100">
+                    <i class="fas fa-language fa-3x text-warning mb-3"></i>
+                    <h4>Urdu Support</h4>
+                    <p class="text-muted">Full Urdu & regional language support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="container my-5">
+    <h2 class="text-center mb-4 fw-bold">Quick Actions</h2>
+    <div class="row g-4 text-center">
+        <div class="col-md-3">
+            <div class="card p-3 shadow-sm border-0 hover-card">
+                <i class="fas fa-book-reader fa-2x text-primary mb-2"></i>
+                <h6>Borrow Book</h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-3 shadow-sm border-0 hover-card">
+                <i class="fas fa-undo-alt fa-2x text-success mb-2"></i>
+                <h6>Return Book</h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-3 shadow-sm border-0 hover-card">
+                <i class="fas fa-hand-holding-usd fa-2x text-warning mb-2"></i>
+                <h6>Pay Fine</h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-3 shadow-sm border-0 hover-card">
+                <i class="fas fa-search fa-2x text-info mb-2"></i>
+                <h6>Search Books</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="~/js/homepage.js"></script>

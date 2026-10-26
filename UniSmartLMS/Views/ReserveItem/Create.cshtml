@@ -1,0 +1,76 @@
+﻿@model UniSmartLMS.Models.SectionE_Circulation.ReserveItem
+
+@{
+    ViewData["Title"] = "Reserve Book";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Reserve Book</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ItemInfoId" class="form-label fw-bold">Book</label>
+                                <select asp-for="ItemInfoId" class="form-control" asp-items="ViewBag.ItemList">
+                                    <option value="">-- Select Book --</option>
+                                </select>
+                                <span asp-validation-for="ItemInfoId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LibraryMemberId" class="form-label fw-bold">Member</label>
+                                <select asp-for="LibraryMemberId" class="form-control" asp-items="ViewBag.MemberList">
+                                    <option value="">-- Select Member --</option>
+                                </select>
+                                <span asp-validation-for="LibraryMemberId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="DurationId" class="form-label fw-bold">Hold Duration</label>
+                                <select asp-for="DurationId" class="form-control" asp-items="ViewBag.DurationList">
+                                    <option value="">-- Select Duration --</option>
+                                </select>
+                                <span asp-validation-for="DurationId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NumberDuration" class="form-label fw-bold">Number Duration</label>
+                                <input asp-for="NumberDuration" class="form-control" placeholder="e.g., 7 days" />
+                                <span asp-validation-for="NumberDuration" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Note:</strong> Reservation will expire after 7 days if not picked up.
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" checked />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Reserve Book</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

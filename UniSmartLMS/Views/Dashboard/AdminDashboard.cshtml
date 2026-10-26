@@ -1,0 +1,170 @@
+﻿@model UniSmartLMS.ViewModels.AdminDashboardViewModel
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<style>
+    .admin-stat {
+        transition: all 0.2s;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+
+        .admin-stat:hover {
+            transform: translateY(-3px);
+        }
+
+    .gradient-card {
+        background: linear-gradient(135deg, #1a472a, #0d2b1a);
+    }
+
+    .quick-link-btn {
+        transition: all 0.2s;
+        border-radius: 10px;
+    }
+
+        .quick-link-btn:hover {
+            transform: translateX(5px);
+            background: #f8f9fa;
+        }
+</style>
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="gradient-card text-white p-4 rounded-4 shadow">
+                <h2><i class="fas fa-chart-line me-3"></i>Admin Dashboard</h2>
+                <p class="mb-0 opacity-75"><i class="fas fa-database me-2"></i>System-wide Analytics & Control Panel</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card admin-stat bg-primary text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.TotalUniversities</h2>
+                <p class="mb-0">Universities</p>
+                <small>Total institutions</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card admin-stat bg-success text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.TotalBooks</h2>
+                <p class="mb-0">Books</p>
+                <small>In catalog</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card admin-stat bg-info text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.TotalMembers</h2>
+                <p class="mb-0">Members</p>
+                <small>Registered users</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card admin-stat bg-warning text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.ActiveLoans</h2>
+                <p class="mb-0">Active Loans</p>
+                <small>Currently borrowed</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card admin-stat bg-secondary text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.TodaysIssuances</h2>
+                <p class="mb-0">Today's Issues</p>
+                <small>Today's activity</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card admin-stat bg-danger text-white shadow p-3">
+                <h2 class="display-4 fw-bold">₨ @Model.TotalFineAmount.ToString("N0")</h2>
+                <p class="mb-0">Total Fines</p>
+                <small>Collected to date</small>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card admin-stat bg-success text-white shadow p-3">
+                <h2 class="display-4 fw-bold">@Model.TotalReservations</h2>
+                <p class="mb-0">Reservations</p>
+                <small>Active holds</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-12">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-link me-2"></i>Quick Links</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <a href="/ItemInfo/Index" class="btn btn-outline-primary quick-link-btn w-100 py-3">
+                                <i class="fas fa-book-open me-2 fa-lg"></i>Browse All Books
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/SmartLibrary/Index" class="btn btn-outline-success quick-link-btn w-100 py-3">
+                                <i class="fas fa-brain me-2 fa-lg"></i>AI Smart Library
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/Research/Index" class="btn btn-outline-danger quick-link-btn w-100 py-3">
+                                <i class="fas fa-file-alt me-2 fa-lg"></i>Research Papers
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/BorrowRequest/Index" class="btn btn-outline-warning quick-link-btn w-100 py-3">
+                                <i class="fas fa-clipboard-list me-2 fa-lg"></i>Borrow Requests
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-cog me-2"></i>System Management</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-users me-2"></i>User Management</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-database me-2"></i>Backup & Restore</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-chart-bar me-2"></i>System Reports</a>
+                        <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-history me-2"></i>Audit Logs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow border-0 rounded-4">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between"><span>Book Availability</span><span>@Model.ActiveLoans / @Model.TotalBooks</span></div>
+                        <div class="progress"><div class="progress-bar bg-success" style="width: @(Model.TotalBooks > 0 ? (Model.ActiveLoans * 100 / Model.TotalBooks) : 0)%">@(Model.TotalBooks > 0 ? (Model.ActiveLoans * 100 / Model.TotalBooks) : 0)%</div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between"><span>Member Activity</span><span>@Model.ActiveLoans active loans</span></div>
+                        <div class="progress"><div class="progress-bar bg-info" style="width: 65%">65%</div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between"><span>Fine Collection Rate</span><span>@Model.TotalFineAmount.ToString("N0") Rs.</span></div>
+                        <div class="progress"><div class="progress-bar bg-warning" style="width: 75%">75%</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

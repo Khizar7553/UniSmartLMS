@@ -1,0 +1,81 @@
+﻿@model UniSmartLMS.Models.SectionD_People.Party
+
+@{
+    ViewData["Title"] = "Create Party";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Add New Party</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="PartyName" class="form-label fw-bold">Full Name</label>
+                            <input asp-for="PartyName" class="form-control" placeholder="e.g., John Doe" />
+                            <span asp-validation-for="PartyName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-bold">Email Address</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="example@domain.com" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PartyContact" class="form-label fw-bold">Contact Number</label>
+                            <input asp-for="PartyContact" class="form-control" placeholder="+92 300 1234567" />
+                            <span asp-validation-for="PartyContact" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PartyPositionId" class="form-label fw-bold">Position</label>
+                            <select asp-for="PartyPositionId" class="form-control" asp-items="ViewBag.PositionList">
+                                <option value="">-- Select Position --</option>
+                            </select>
+                            <span asp-validation-for="PartyPositionId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Party Type</label>
+                            <select asp-for="PartyTypeId" class="form-control">
+                                <option value="">-- Select Type --</option>
+                                <option value="1">Student</option>
+                                <option value="2">Faculty</option>
+                                <option value="3">Staff</option>
+                                <option value="4">Librarian</option>
+                                <option value="5">Admin</option>
+                                <option value="6">Visitor</option>
+                                <option value="7">Vendor</option>
+                                <option value="8">Author</option>
+                            </select>
+                            <span asp-validation-for="PartyTypeId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" checked />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Create</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

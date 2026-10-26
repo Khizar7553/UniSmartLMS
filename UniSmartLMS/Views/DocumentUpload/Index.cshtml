@@ -1,0 +1,57 @@
+﻿@using UniSmartLMS.Models
+@{
+    ViewData["Title"] = "Document Management";
+    var documents = ViewBag.Documents as List<Document> ?? new List<Document>();
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-success text-white">
+            <h3>Upload Documents for AI Training</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Select File</label>
+                    <input type="file" name="file" class="form-control" accept=".pdf,.docx,.doc,.pptx,.ppt,.txt" required />
+                    <small class="text-muted">Supported: PDF, DOCX, DOC, PPTX, PPT, TXT | Max size: 15MB</small>
+                </div>
+                <button type="submit" class="btn btn-success">Upload & Index</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card mt-4 shadow-lg border-0 rounded-4">
+        <div class="card-header bg-info text-white">
+            <h3>Indexed Documents</h3>
+        </div>
+        <div class="card-body">
+            @if (documents.Any())
+            {
+                <table class="table">
+                    <thead><tr><th>Name</th><th>Size</th><th>Uploaded</th><th>Action</th></tr></thead>
+                    <tbody>
+                        @foreach (var doc in documents)
+                        {
+                            <tr>
+                                <td>@doc.FileName</td>
+                                <td>@(doc.FileSize / 1024) KB</td>
+                                <td>@doc.UploadedAt.ToString("dd MMM yyyy")</td>
+                                <td>
+                                    <form asp-action="DeleteConfirmed" method="post" style="display:inline">
+                                        <input type="hidden" name="id" value="@doc.Id" />
+                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No documents uploaded yet.</p>
+            }
+        </div>
+    </div>
+</div>

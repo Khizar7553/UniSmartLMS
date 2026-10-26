@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UniSmartLMS</title>
+
+    <!-- Bootstrap + Fonts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/homepage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard-common.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ai-avatar.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-xl navbar-dark sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                <i class="fas fa-book-open me-2 text-warning"></i>
+                <span class="text-warning">UniSmart</span><span class="text-white">LMS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <!-- Dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Dashboard" asp-action="Index">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+
+                    <!-- Catalog Dropdown (All Users) -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-book-open me-1"></i>Catalog
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Research" asp-action="Index"><i class="fas fa-file-alt me-2"></i>Research Assistant</a></li>
+                                <li><a class="dropdown-item" asp-controller="SmartLibrary" asp-action="Index"><i class="fas fa-brain me-2 text-primary"></i>AI Smart Library</a></li>
+
+                                @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
+                                {
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-controller="DocumentUpload" asp-action="Index"><i class="fas fa-upload me-2"></i>Upload Documents</a></li>
+                                    <li><a class="dropdown-item" asp-controller="ItemInfo" asp-action="Index"><i class="fas fa-book me-2"></i>Manage Books</a></li>
+                                    <li><a class="dropdown-item" asp-controller="ItemCopy" asp-action="Index"><i class="fas fa-copy me-2"></i>Manage Copies</a></li>
+                                    <li><a class="dropdown-item" asp-controller="AuthorInfo" asp-action="Index"><i class="fas fa-user-edit me-2"></i>Authors</a></li>
+                                    <li><a class="dropdown-item" asp-controller="PublisherInfo" asp-action="Index"><i class="fas fa-print me-2"></i>Publishers</a></li>
+                                    <li><a class="dropdown-item" asp-controller="SubjectHeading" asp-action="Index"><i class="fas fa-tags me-2"></i>Subjects</a></li>
+                                    <li><a class="dropdown-item" asp-controller="BorrowRequest" asp-action="Index"><i class="fas fa-clipboard-list me-2"></i>Borrow Requests</a></li>
+                                }
+                                else if (User.IsInRole("Student"))
+                                {
+                                    <li><a class="dropdown-item" asp-controller="StudentCatalog" asp-action="Books"><i class="fas fa-search me-2"></i>Browse Books</a></li>
+                                    <li><a class="dropdown-item" asp-controller="BorrowRequest" asp-action="Create"><i class="fas fa-hand-holding-heart me-2"></i>Request Book</a></li>
+                                    <li><a class="dropdown-item" asp-controller="BorrowRequest" asp-action="MyRequests"><i class="fas fa-list me-2"></i>My Requests</a></li>
+                                }
+                                else if (User.IsInRole("Faculty"))
+                                {
+                                    <li><a class="dropdown-item" asp-controller="FacultyCatalog" asp-action="Books"><i class="fas fa-search me-2"></i>Browse Books</a></li>
+                                    <li><a class="dropdown-item" asp-controller="FacultyCatalog" asp-action="ResearchResources"><i class="fas fa-flask me-2"></i>Research Resources</a></li>
+                                }
+                                else if (User.IsInRole("Staff"))
+                                {
+                                    <li><a class="dropdown-item" asp-controller="StaffCatalog" asp-action="Books"><i class="fas fa-search me-2"></i>Browse Books</a></li>
+                                }
+                                else if (User.IsInRole("Visitor"))
+                                {
+                                    <li><a class="dropdown-item" asp-controller="VisitorCatalog" asp-action="Books"><i class="fas fa-search me-2"></i>Browse Books</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+
+                    <!-- Admin Management (Admin Only) -->
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown mega-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-cog me-1"></i>Management
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header"><i class="fas fa-university me-2"></i>University</h6>
+                                        <a class="dropdown-item" asp-controller="University" asp-action="Index">Universities</a>
+                                        <a class="dropdown-item" asp-controller="Campus" asp-action="Index">Campuses</a>
+                                        <a class="dropdown-item" asp-controller="Block" asp-action="Index">Blocks</a>
+                                        <a class="dropdown-item" asp-controller="Building" asp-action="Index">Buildings</a>
+                                        <a class="dropdown-item" asp-controller="Floor" asp-action="Index">Floors</a>
+                                        <a class="dropdown-item" asp-controller="Room" asp-action="Index">Rooms</a>
+                                        <a class="dropdown-item" asp-controller="Institute" asp-action="Index">Institutes</a>
+                                        <a class="dropdown-item" asp-controller="Department" asp-action="Index">Departments</a>
+                                        <a class="dropdown-item" asp-controller="Designation" asp-action="Index">Designations</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header"><i class="fas fa-book me-2"></i>Library</h6>
+                                        <a class="dropdown-item" asp-controller="LibraryType" asp-action="Index">Library Types</a>
+                                        <a class="dropdown-item" asp-controller="LibraryBranch" asp-action="Index">Library Branches</a>
+                                        <a class="dropdown-item" asp-controller="LibraryItemSection" asp-action="Index">Library Sections</a>
+                                        <a class="dropdown-item" asp-controller="LibraryRack" asp-action="Index">Library Racks</a>
+                                        <a class="dropdown-item" asp-controller="LibraryShelf" asp-action="Index">Library Shelves</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header"><i class="fas fa-users me-2"></i>People</h6>
+                                        <a class="dropdown-item" asp-controller="Party" asp-action="Index">Parties</a>
+                                        <a class="dropdown-item" asp-controller="Student" asp-action="Index">Students</a>
+                                        <a class="dropdown-item" asp-controller="Employee" asp-action="Index">Employees</a>
+                                        <a class="dropdown-item" asp-controller="LibraryMember" asp-action="Index">Library Members</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 class="dropdown-header"><i class="fas fa-chart-line me-2"></i>Reports</h6>
+                                        <a class="dropdown-item" asp-controller="Report" asp-action="Dashboard">Reports Dashboard</a>
+                                        <a class="dropdown-item" asp-controller="Report" asp-action="PopularBooks">Popular Books</a>
+                                        <a class="dropdown-item" asp-controller="Report" asp-action="MemberActivity">Member Activity</a>
+                                        <a class="dropdown-item" asp-controller="Report" asp-action="FineCollection">Fine Collection</a>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                    }
+
+                    <!-- Librarian/Admin Advanced Catalog & Circulation -->
+                    @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Librarian")))
+                    {
+                        <li class="nav-item dropdown mega-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-book-open me-1"></i>Advanced Catalog
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="dropdown-header"><i class="fas fa-tags me-2"></i>Metadata</h6>
+                                        <a class="dropdown-item" asp-controller="AuthorInfo" asp-action="Index">Authors</a>
+                                        <a class="dropdown-item" asp-controller="PublisherInfo" asp-action="Index">Publishers</a>
+                                        <a class="dropdown-item" asp-controller="SubjectHeading" asp-action="Index">Subjects</a>
+                                        <a class="dropdown-item" asp-controller="Language" asp-action="Index">Languages</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="dropdown-header"><i class="fas fa-book me-2"></i>Books</h6>
+                                        <a class="dropdown-item" asp-controller="ItemInfo" asp-action="Index">Book Catalog</a>
+                                        <a class="dropdown-item" asp-controller="ItemCopy" asp-action="Index">Book Copies</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="dropdown-header"><i class="fas fa-chart-simple me-2"></i>Statistics</h6>
+                                        <a class="dropdown-item" href="#">Popular Books</a>
+                                        <a class="dropdown-item" href="#">Category Stats</a>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown mega-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-exchange-alt me-1"></i>Circulation
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h6 class="dropdown-header"><i class="fas fa-gavel me-2"></i>Rules</h6>
+                                        <a class="dropdown-item" asp-controller="CirculationRule" asp-action="Index">Circulation Rules</a>
+                                        <a class="dropdown-item" asp-controller="Duration" asp-action="Index">Durations</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="dropdown-header"><i class="fas fa-hand-holding-heart me-2"></i>Transactions</h6>
+                                        <a class="dropdown-item" asp-controller="Issuance" asp-action="Index">Issue Books</a>
+                                        <a class="dropdown-item" asp-controller="ReturnItem" asp-action="Index">Return Books</a>
+                                        <a class="dropdown-item" asp-controller="ReserveItem" asp-action="Index">Reservations</a>
+                                        <a class="dropdown-item" asp-controller="ItemRequisition" asp-action="Index">Requisitions</a>
+                                        <a class="dropdown-item" asp-controller="Withdrawal" asp-action="Index">Withdrawals</a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="dropdown-header"><i class="fas fa-money-bill-wave me-2"></i>Fines</h6>
+                                        <a class="dropdown-item" asp-controller="FineCategory" asp-action="Index">Fine Categories</a>
+                                        <a class="dropdown-item" asp-controller="FineDefinition" asp-action="Index">Fine Definitions</a>
+                                        <a class="dropdown-item" asp-controller="UserFine" asp-action="Index">User Fines</a>
+                                        <a class="dropdown-item" asp-controller="FineTransaction" asp-action="Index">Fine Transactions</a>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                    }
+
+                   @*  <!-- Language Selector -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-language me-1"></i>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                var userLang = User.FindFirst("PreferredLanguage")?.Value ?? "English";
+                                <span>@userLang</span>
+                            }
+                            else
+                            {
+                                <span>Language</span>
+                            }
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="setLanguage('English')">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="setLanguage('Urdu')">🇵🇰 اردو</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="setLanguage('RomanUrdu')">🇵🇰 Roman Urdu</a></li>
+                        </ul>
+                    </li> *@
+
+                    <script>
+                        function setLanguage(lang) {
+                            fetch('/Account/SetLanguage', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ language: lang })
+                            })
+                            .then(response => {
+                                if (!response.ok) throw new Error('Language change failed');
+                                location.reload();
+                            })
+                            .catch(error => console.error('Error:', error));
+                        }
+                    </script>
+
+                    <!-- Account Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                <li><a class="dropdown-item bg-primary text-white" asp-controller="Admin" asp-action="Dashboard"><i class="fas fa-crown me-2"></i>Admin Panel</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="UserManagement"><i class="fas fa-users me-2"></i>User Management</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="AuditLogs"><i class="fas fa-history me-2"></i>Audit Logs</a></li>
+                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="AssignRole"><i class="fas fa-user-tag me-2"></i>Assign Roles</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            }
+
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Librarian"))
+                            {
+                                <li><a class="dropdown-item bg-info text-white" asp-controller="LibrarianUser" asp-action="Dashboard"><i class="fas fa-user-friends me-2"></i>Librarian Panel</a></li>
+                                <li><a class="dropdown-item" asp-controller="LibrarianUser" asp-action="UserManagement"><i class="fas fa-users me-2"></i>User Management</a></li>
+                                <li><a class="dropdown-item" asp-controller="LibrarianUser" asp-action="CreateUser"><i class="fas fa-user-plus me-2"></i>Create User</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            }
+
+                            <partial name="_LoginPartial" />
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        @RenderBody()
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-white pt-4 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-warning">UniSmartLMS</h5>
+                    <p class="text-white-50 small">Intelligent University Library Management System with AI Assistant</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-warning">Quick Links</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-warning">Contact</h6>
+                    <p class="text-white-50 small mb-1"><i class="fas fa-envelope me-2"></i>support@unismartlms.edu.pk</p>
+                    <p class="text-white-50 small"><i class="fas fa-phone me-2"></i>+92 42 1234 5678</p>
+                </div>
+            </div>
+            <hr class="border-secondary" />
+            <div class="text-center text-white-50 small">
+                &copy; 2026 UniSmartLMS - All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Avatar (Authenticated Users Only) -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="_AIAvatar" />
+    }
+
+    <!-- Scripts -->
+    <!-- Keep only these JS files -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+    <script src="~/js/ai-avatar.js" asp-append-version="true"></script>
+    <script src="~/js/homepage.js" asp-append-version="true"></script>
+    <script src="~/js/student-dashboard.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

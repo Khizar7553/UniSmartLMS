@@ -1,0 +1,91 @@
+﻿@model UniSmartLMS.Models.SectionG_Acquisitions.ItemQuotation
+
+@{
+    ViewData["Title"] = "Create Item Quotation";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Add New Quotation</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PartyId" class="form-label fw-bold">Vendor / Party</label>
+                                <select asp-for="PartyId" class="form-control" asp-items="ViewBag.PartyList">
+                                    <option value="">-- Select Vendor --</option>
+                                </select>
+                                <span asp-validation-for="PartyId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LibraryRackId" class="form-label fw-bold">Rack (Almari)</label>
+                                <select asp-for="LibraryRackId" class="form-control" asp-items="ViewBag.RackList">
+                                    <option value="">-- Select Rack --</option>
+                                </select>
+                                <span asp-validation-for="LibraryRackId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="QuotationDate" class="form-label fw-bold">Quotation Date (YYYYMMDD)</label>
+                                <input asp-for="QuotationDate" class="form-control" placeholder="e.g., 20260502" />
+                                <span asp-validation-for="QuotationDate" class="text-danger small"></span>
+                                <small class="text-muted">Format: Year(4) + Month(2) + Day(2) – Example: 20260502 for 02-May-2026</small>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Amount" class="form-label fw-bold">Amount (Rs.)</label>
+                                <input asp-for="Amount" class="form-control" placeholder="e.g., 50000" />
+                                <span asp-validation-for="Amount" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Discount" class="form-label fw-bold">Discount (Rs.)</label>
+                                <input asp-for="Discount" class="form-control" placeholder="e.g., 5000" />
+                                <span asp-validation-for="Discount" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Net Amount:</strong> <span id="netAmount">0.00</span> Rs.
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" checked />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Create Quotation</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function() {
+            function calculateNet() {
+                var amount = parseFloat($('#Amount').val()) || 0;
+                var discount = parseFloat($('#Discount').val()) || 0;
+                var net = amount - discount;
+                $('#netAmount').text(net.toFixed(2));
+            }
+            $('#Amount, #Discount').on('keyup change', calculateNet);
+        });
+    </script>
+}

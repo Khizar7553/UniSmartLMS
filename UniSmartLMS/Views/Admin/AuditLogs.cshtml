@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UniSmartLMS.Models.AuditLog>
+@{
+    ViewData["Title"] = "Audit Logs";
+}
+
+@if (!User.IsInRole("Admin"))
+{
+    <div class="alert alert-danger">Access Denied. Admin only.</div>
+    return;
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-dark text-white">
+            <h4><i class="fas fa-history me-2"></i>System Audit Logs</h4>
+            <p class="mb-0 small">Track all user actions across the system</p>
+        </div>
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info text-center">
+                    <i class="fas fa-info-circle me-2"></i>No audit logs found.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover" id="auditTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Table</th>
+                                <th>Record ID</th>
+                                <th>Action</th>
+                                <th>Old Values</th>
+                                <th>New Values</th>
+                                <th>Performed By</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var log in Model)
+                            {
+                                <tr>
+                                    <td>@log.TableName</td>
+                                    <td>@log.RecordId</td>
+                                    <td>
+                                        <span class="badge @(log.Action == "INSERT" ? "bg-success" : log.Action == "UPDATE" ? "bg-warning" : "bg-danger")">
+                                            @log.Action
+                                        </span>
+                                    </td>
+                                    <td><small class="text-muted">@log.OldValues</small></td>
+                                    <td><small class="text-muted">@log.NewValues</small></td>
+                                    <td>@log.PerformedByName</td>
+                                    <td>@log.Timestamp.ToString("dd MMM yyyy HH:mm:ss")</td>
+                                 </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

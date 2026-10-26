@@ -1,0 +1,82 @@
+﻿@model UniSmartLMS.Models.SectionE_Circulation.Withdrawal
+
+@{
+    ViewData["Title"] = "Withdraw Book";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-success text-white rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Withdraw Book</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ItemCopyId" class="form-label fw-bold">Book Copy</label>
+                                <select asp-for="ItemCopyId" class="form-control" asp-items="ViewBag.CopyList">
+                                    <option value="">-- Select Book Copy --</option>
+                                </select>
+                                <span asp-validation-for="ItemCopyId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="EmployeeId" class="form-label fw-bold">Processed By</label>
+                                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeList">
+                                    <option value="">-- Select Employee --</option>
+                                </select>
+                                <span asp-validation-for="EmployeeId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Date" class="form-label fw-bold">Withdrawal Date</label>
+                                <input asp-for="Date" type="date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Reason" class="form-label fw-bold">Reason for Withdrawal</label>
+                                <select asp-for="Reason" class="form-control">
+                                    <option value="">-- Select Reason --</option>
+                                    <option value="Damaged">Damaged</option>
+                                    <option value="Lost">Lost</option>
+                                    <option value="Obsolete">Obsolete / Old Edition</option>
+                                    <option value="Stolen">Stolen</option>
+                                    <option value="Weeded">Weeded (Low Usage)</option>
+                                    <option value="Duplicate">Duplicate Copy</option>
+                                </select>
+                                <span asp-validation-for="Reason" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Warning:</strong> This will remove the book copy from circulation.
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" checked />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success px-4"><i class="fas fa-save me-2"></i>Withdraw Book</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

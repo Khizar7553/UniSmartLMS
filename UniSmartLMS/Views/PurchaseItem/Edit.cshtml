@@ -1,0 +1,97 @@
+﻿@model UniSmartLMS.Models.SectionG_Acquisitions.PurchaseItem
+
+@{
+    ViewData["Title"] = "Edit Purchase Item";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Purchase Item</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ItemQuotationId" class="form-label fw-bold">Quotation ID</label>
+                                <select asp-for="ItemQuotationId" class="form-control" asp-items="ViewBag.QuotationList">
+                                    <option value="">-- Select Quotation --</option>
+                                </select>
+                                <span asp-validation-for="ItemQuotationId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LibraryItemId" class="form-label fw-bold">Book</label>
+                                <select asp-for="LibraryItemId" class="form-control" asp-items="ViewBag.ItemList">
+                                    <option value="">-- Select Book --</option>
+                                </select>
+                                <span asp-validation-for="LibraryItemId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PartyId" class="form-label fw-bold">Vendor</label>
+                                <select asp-for="PartyId" class="form-control" asp-items="ViewBag.PartyList">
+                                    <option value="">-- Select Vendor --</option>
+                                </select>
+                                <span asp-validation-for="PartyId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PurchaseItemDate" class="form-label fw-bold">Purchase Date</label>
+                                <input asp-for="PurchaseItemDate" type="date" class="form-control" />
+                                <span asp-validation-for="PurchaseItemDate" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="InvoiceNumber" class="form-label fw-bold">Invoice Number</label>
+                                <input asp-for="InvoiceNumber" class="form-control" />
+                                <span asp-validation-for="InvoiceNumber" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="TotalAmount" class="form-label fw-bold">Total Amount</label>
+                                <input asp-for="TotalAmount" class="form-control" />
+                                <span asp-validation-for="TotalAmount" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Discount" class="form-label fw-bold">Discount</label>
+                            <input asp-for="Discount" class="form-control" />
+                            <span asp-validation-for="Discount" class="text-danger small"></span>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Net Amount:</strong> <span id="netAmount">@((Model.TotalAmount - Model.Discount).ToString("N2"))</span> Rs.
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

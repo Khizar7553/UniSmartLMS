@@ -1,0 +1,89 @@
+﻿@model UniSmartLMS.Models.SectionD_People.LibraryMember
+
+@{
+    ViewData["Title"] = "Edit Library Member";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-warning text-dark rounded-4 rounded-bottom-0">
+                    <h3 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Library Member</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="CreatedAt" />
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="PartyId" class="form-label fw-bold">Member Name</label>
+                                <select asp-for="PartyId" class="form-control" asp-items="ViewBag.PartyList">
+                                    <option value="">-- Select Person --</option>
+                                </select>
+                                <span asp-validation-for="PartyId" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="LibraryBranchId" class="form-label fw-bold">Library Branch</label>
+                                <select asp-for="LibraryBranchId" class="form-control" asp-items="ViewBag.BranchList">
+                                    <option value="">-- Select Branch --</option>
+                                </select>
+                                <span asp-validation-for="LibraryBranchId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="CardNo" class="form-label fw-bold">Card Number</label>
+                            <input asp-for="CardNo" class="form-control" />
+                            <span asp-validation-for="CardNo" class="text-danger small"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="IssuedOn" class="form-label fw-bold">Issued Date</label>
+                                <input asp-for="IssuedOn" type="date" class="form-control" />
+                                <span asp-validation-for="IssuedOn" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ExpiredOn" class="form-label fw-bold">Expiry Date</label>
+                                <input asp-for="ExpiredOn" type="date" class="form-control" />
+                                <span asp-validation-for="ExpiredOn" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="MembershipType" class="form-label fw-bold">Membership Type</label>
+                            <select asp-for="MembershipType" class="form-control">
+                                <option value="0">-- Select Type --</option>
+                                <option value="1">Student</option>
+                                <option value="2">Faculty</option>
+                                <option value="3">Staff</option>
+                                <option value="4">Public</option>
+                                <option value="5">Researcher</option>
+                            </select>
+                            <span asp-validation-for="MembershipType" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="IsActive" class="form-check-input" />
+                            <label asp-for="IsActive" class="form-check-label fw-bold">Active</label>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-warning px-4"><i class="fas fa-save me-2"></i>Save</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4"><i class="fas fa-arrow-left me-2"></i>Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
